@@ -3,6 +3,9 @@
 import urllib2
 from bs4 import BeautifulSoup
 
+MILLION = 1000000
+ONE = 1
+
 def _get_by_id(bs, idstr):
     return bs.find_all(id=idstr)[0]
 
@@ -17,23 +20,56 @@ def _expend_row(bstr):
         ret.append(c.string)
     return ret
 
-url = 'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_2412.djhtm'
-wanted = (u'資產總額', u'負債總額')
+MAPPING = {
+    # url: (wanted_column_names)
+    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_2412.djhtm':
+        (u'資產總額', u'負債總額'),
+    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq_2412.djhtm':
+        (u'稅前淨利', u'每股盈餘(元)'),
+    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc3_2412.djhtm':
+        (u'稅後淨利', u'投資活動之現金流量'),
+}
 
-bs = BeautifulSoup(urllib2.urlopen(url))
+FIELDS = {
+        # column_name: (variable_name, unit)
+        u'資產總額': ('total_assets', MILLION),
+        u'負債總額': ('total_debts', MILLION),
+        u'稅前淨利': ('net_profit_before_tax', MILLION),
+        u'每股盈餘(元)': ('eps', ONE),
+        u'稅後淨利': ('net_profit_after_tax', MILLION),
+        u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
+}
 
-#table = _get_by_id(bs, 'oMainTable')
-head = _get_by_id(bs, 'oScrollMenu')
-periods =  _expend_row(head)[1:]
+def parse_fubon_url(url, wanted):
+    bs = BeautifulSoup(urllib2.urlopen(url))
 
-result = {}
+    #table = _get_by_id(bs, 'oMainTable')
+    head = _get_by_id(bs, 'oScrollMenu')
+    periods =  _expend_row(head)[1:]
 
-for td in _list_elements(head.next_siblings):
-    items = _expend_row(td)
-    title = items[0].strip()
-    if title in wanted:
-        for i, data in enumerate(items[1:]):
-            result.setdefault(periods[i], {})[title] = int(data.replace(',', ''))
+    result = {}
 
-import pprint
-pprint.pprint(result)
+    for td in _list_elements(head.next_siblings):
+        items = _expend_row(td)
+        print items
+        if len(items) - 1 != len(periods):
+            continue
+        title = items[0].strip()
+        if title in wanted:
+            for i, data in enumerate(items[1:]):
+                value = float(data.replace(',', ''))
+                var_name, unit = FIELDS[title]
+                result.setdefault(periods[i], {})[var_name] = value * unit
+    return result
+
+def run_once():
+    result = {}
+    for url, wanted in MAPPING.items():
+        parsed = parse_fubon_url(url, wanted)
+        for period, values in parsed.items():
+            result.setdefault(period, {}).update(values)
+    import pprint
+    pprint.pprint(result)
+
+if __name__ == '__main__':
+    run_once()
