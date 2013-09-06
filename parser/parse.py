@@ -51,7 +51,6 @@ def parse_fubon_url(url, wanted):
 
     for td in _list_elements(head.next_siblings):
         items = _expend_row(td)
-        print items
         if len(items) - 1 != len(periods):
             continue
         title = items[0].strip()
