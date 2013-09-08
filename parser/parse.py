@@ -23,7 +23,7 @@ def _expend_row(bstr):
     return ret
 
 SEASON_MAPPING = {
-     url: (wanted_column_names)
+    # url: (wanted_column_names)
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_2412.djhtm': # 資產負債表季表
         (u'資產總額', u'負債總額'),
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq_2412.djhtm': # 損益季表
@@ -55,7 +55,7 @@ FIELDS = {
 }
 
 def parse_fubon_url(url, wanted):
-    bs = BeautifulSoup(urllib2.urlopen(url))
+    bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
     #table = _get_by_id(bs, 'oMainTable')
     head = _get_by_id(bs, 'oScrollMenu')
