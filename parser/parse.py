@@ -22,7 +22,7 @@ def _expend_row(bstr):
         ret.append(c.string)
     return ret
 
-SEASON_MAPPING = {
+QUARTER_MAPPING = {
     # url: (wanted_column_names)
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_2412.djhtm': # 資產負債表季表
         (u'資產總額', u'負債總額'),
@@ -34,7 +34,7 @@ SEASON_MAPPING = {
         (u'營業毛利率', u'負債比率'),
 }
 
-YEAR_MAPPING = {
+ANNUAL_MAPPING = {
     # url: (wanted_column_names)
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpb/zcpb_2412.djhtm': # 資產負債表年表
         (u'資產總額', u'負債總額'),
@@ -77,7 +77,7 @@ def parse_fubon_url(url, wanted):
 
 def run_once():
     result = {}
-    for url, wanted in SEASON_MAPPING.items():
+    for url, wanted in QUARTER_MAPPING.items():
         parsed = parse_fubon_url(url, wanted)
         for period, values in parsed.items():
             result.setdefault(period, {}).update(values)
