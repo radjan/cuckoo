@@ -10,20 +10,6 @@ COL_PERIOD = u'期別'
 
 STOCK_NO = '2412'
 
-def _get_by_id(bs, idstr):
-    return bs.find_all(id=idstr)[0]
-
-def _list_elements(bslist):
-    for c in bslist:
-        if c.name != None:
-            yield c
-
-def _expend_row(bstr):
-    ret = []
-    for c in _list_elements(bstr.children):
-        ret.append(c.string)
-    return ret
-
 MAPPING = {
     # url: (wanted_column_names)
     # QUARTER_MAPPING
@@ -59,27 +45,19 @@ FIELDS = {
         u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
 }
 
-def parse_fubon_url_id(url, wanted):
-    # deprecated: use parse_fubon_url instead
-    bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
+def _get_by_id(bs, idstr):
+    return bs.find_all(id=idstr)[0]
 
-    #table = _get_by_id(bs, 'oMainTable')
-    head = _get_by_id(bs, 'oScrollMenu')
-    periods =  _expend_row(head)[1:]
+def _list_elements(bslist):
+    for c in bslist:
+        if c.name != None:
+            yield c
 
-    result = {}
-
-    for tr in _list_elements(head.next_siblings):
-        items = _expend_row(tr)
-        if len(items) - 1 != len(periods):
-            continue
-        col_name = items[0].strip()
-        if col_name in wanted:
-            for i, data in enumerate(items[1:]):
-                value = float(data.replace(',', ''))
-                var_name, unit = FIELDS[col_name]
-                result.setdefault(periods[i], {})[var_name] = value * unit
-    return result
+def _expend_row(bstr):
+    ret = []
+    for c in _list_elements(bstr.children):
+        ret.append(c.string)
+    return ret
 
 def parse_fubon_url(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
@@ -110,8 +88,33 @@ def run_once():
         parsed = parse_fubon_url(url, wanted)
         for period, values in parsed.items():
             result.setdefault(period, {}).update(values)
+    # TODO: save 
     import pprint
     pprint.pprint(result)
 
 if __name__ == '__main__':
     run_once()
+
+
+# deprecated: use parse_fubon_url instead
+def parse_fubon_url_id(url, wanted):
+    bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
+
+    #table = _get_by_id(bs, 'oMainTable')
+    head = _get_by_id(bs, 'oScrollMenu')
+    periods =  _expend_row(head)[1:]
+
+    result = {}
+
+    for tr in _list_elements(head.next_siblings):
+        items = _expend_row(tr)
+        if len(items) - 1 != len(periods):
+            continue
+        col_name = items[0].strip()
+        if col_name in wanted:
+            for i, data in enumerate(items[1:]):
+                value = float(data.replace(',', ''))
+                var_name, unit = FIELDS[col_name]
+                result.setdefault(periods[i], {})[var_name] = value * unit
+    return result
+
