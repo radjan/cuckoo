@@ -56,7 +56,7 @@ def parse_fubon_url(url, wanted):
 
     trs = bs.find_all('tr')
     for tr in trs:
-        items = soup_helper._expend_row(tr)
+        items = soup_helper.expend_row(tr)
         if items and items[0]:
             col_name = items[0].strip()
             # assume period title is above the values
@@ -89,13 +89,13 @@ def parse_fubon_url_id(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
     #table = _get_by_id(bs, 'oMainTable')
-    head = soup_helper._get_by_id(bs, 'oScrollMenu')
-    periods =  soup_helper._expend_row(head)[1:]
+    head = soup_helper.get_by_id(bs, 'oScrollMenu')
+    periods =  soup_helper.expend_row(head)[1:]
 
     result = {}
 
-    for tr in soup_helper._list_elements(head.next_siblings):
-        items = soup_helper._expend_row(tr)
+    for tr in soup_helper.list_elements(head.next_siblings):
+        items = soup_helper.expend_row(tr)
         if len(items) - 1 != len(periods):
             continue
         col_name = items[0].strip()
