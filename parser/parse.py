@@ -3,6 +3,9 @@
 import urllib2
 from bs4 import BeautifulSoup
 
+import soup_helper
+import common
+
 MILLION = 1000000
 ONE = 1
 PERCENTAGE = 0.01
@@ -45,20 +48,6 @@ FIELDS = {
         u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
 }
 
-def _get_by_id(bs, idstr):
-    return bs.find_all(id=idstr)[0]
-
-def _list_elements(bslist):
-    for c in bslist:
-        if c.name != None:
-            yield c
-
-def _expend_row(bstr):
-    ret = []
-    for c in _list_elements(bstr.children):
-        ret.append(c.string)
-    return ret
-
 def parse_fubon_url(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
@@ -67,7 +56,7 @@ def parse_fubon_url(url, wanted):
 
     trs = bs.find_all('tr')
     for tr in trs:
-        items = _expend_row(tr)
+        items = soup_helper._expend_row(tr)
         if items and items[0]:
             col_name = items[0].strip()
             # assume period title is above the values
@@ -81,19 +70,18 @@ def parse_fubon_url(url, wanted):
                     result.setdefault(periods[i], {})[var_name] = value * unit
     return result
 
-def run_once():
-    result = {}
+def run_once(stock_no):
+    result = common.load_finance_report(stock_no)
     for url, wanted in MAPPING.items():
-        url = url % STOCK_NO
+        url = url % stock_no
         parsed = parse_fubon_url(url, wanted)
         for period, values in parsed.items():
             result.setdefault(period, {}).update(values)
-    # TODO: save 
-    import pprint
-    pprint.pprint(result)
+
+    common.save_finance_report(stock_no, result)
 
 if __name__ == '__main__':
-    run_once()
+    run_once(STOCK_NO)
 
 
 # deprecated: use parse_fubon_url instead
@@ -101,13 +89,13 @@ def parse_fubon_url_id(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
     #table = _get_by_id(bs, 'oMainTable')
-    head = _get_by_id(bs, 'oScrollMenu')
-    periods =  _expend_row(head)[1:]
+    head = soup_helper._get_by_id(bs, 'oScrollMenu')
+    periods =  soup_helper._expend_row(head)[1:]
 
     result = {}
 
-    for tr in _list_elements(head.next_siblings):
-        items = _expend_row(tr)
+    for tr in soup_helper._list_elements(head.next_siblings):
+        items = soup_helper._expend_row(tr)
         if len(items) - 1 != len(periods):
             continue
         col_name = items[0].strip()
