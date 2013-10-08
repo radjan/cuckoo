@@ -6,8 +6,8 @@ except:
     import json
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
-FINANCE_REPORT = os.path.join(ROOT, 'finance.%s.json')
-DAILY_REPORT = os.path.join(ROOT, 'daily.%s.json')
+FINANCE_REPORT = os.path.join(ROOT, '%s.finance.json')
+DAILY_REPORT = os.path.join(ROOT, '%s.daily.json')
 STOCK_CATALOG = os.path.join(ROOT, 'catalog.json')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
