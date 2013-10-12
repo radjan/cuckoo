@@ -41,6 +41,31 @@ CATELOG = {
     (LISTED_COMPANY, u'油電燃氣'): 'http://tw.stock.yahoo.com/s/list.php?c=%AAo%B9q%BFU%AE%F0',
     (LISTED_COMPANY, u'其他'): 'http://tw.stock.yahoo.com/s/list.php?c=%A8%E4%A5L',
 
+    (OVER_THE_COUNTER, u'食品'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%AD%B9%AB%7E',
+    (OVER_THE_COUNTER, u'塑膠'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B6%EC%BD%A6',
+    (OVER_THE_COUNTER, u'紡織'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%AF%BC%C2%B4',
+    (OVER_THE_COUNTER, u'電機'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B9q%BE%F7',
+    (OVER_THE_COUNTER, u'電器'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B9q%BE%B9',
+    (OVER_THE_COUNTER, u'化工'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A4%C6%A4u',
+    (OVER_THE_COUNTER, u'生技'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A5%CD%A7%DE',
+    (OVER_THE_COUNTER, u'油電'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%AAo%B9q',
+    (OVER_THE_COUNTER, u'鋼鐵'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%BF%FB%C5K',
+    (OVER_THE_COUNTER, u'橡膠'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%BE%F3%BD%A6',
+    (OVER_THE_COUNTER, u'半導'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A5b%BE%C9',
+    (OVER_THE_COUNTER, u'電腦'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B9q%B8%A3',
+    (OVER_THE_COUNTER, u'光電'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A5%FA%B9q',
+    (OVER_THE_COUNTER, u'通信'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B3q%ABH',
+    (OVER_THE_COUNTER, u'電零'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B9q%B9s',
+    (OVER_THE_COUNTER, u'通路'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B3q%B8%F4',
+    (OVER_THE_COUNTER, u'資服'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B8%EA%AAA',
+    (OVER_THE_COUNTER, u'他電'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A5L%B9q',
+    (OVER_THE_COUNTER, u'營建'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%C0%E7%AB%D8',
+    (OVER_THE_COUNTER, u'航運'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%AF%E8%B9B',
+    (OVER_THE_COUNTER, u'觀光'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%C6%5B%A5%FA',
+    (OVER_THE_COUNTER, u'金融'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%AA%F7%BF%C4',
+    (OVER_THE_COUNTER, u'貿易'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%B6T%A9%F6',
+    (OVER_THE_COUNTER, u'其他'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%A8%E4%A5L',
+    (OVER_THE_COUNTER, u'管理'): 'http://tw.stock.yahoo.com/s/list.php?c=%C2d%BA%DE%B2z',
 }
 
 STOCK_NO_IDX = 1
@@ -50,7 +75,10 @@ COLUMN_IDXES = {
 }
 
 def _float(s):
-    return float(s.strip().replace(',', ''))
+    t = s.strip().replace(',', '')
+    if t in (u'-', u'－'):
+        return 0
+    return float(t)
 
 def get_category_stock_info(url):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
@@ -91,4 +119,9 @@ if '__main__' == __name__:
             daily_report[data_date] = data
             common.save_daily_report(stock_no, daily_report)
             catalog.setdefault(SEPARATOR.join(catalog_key), []).append(stock_no)
+
+        if not catalog.setdefault(SEPARATOR.join(catalog_key), []):
+            # TODO: error notification
+            print 'NO  STOCK FOUND!!!!'
+            print catalog_key, url
     common.save_catalog(catalog)
