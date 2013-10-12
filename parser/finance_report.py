@@ -11,8 +11,6 @@ ONE = 1
 PERCENTAGE = 0.01
 COL_PERIOD = u'期別'
 
-STOCK_NO = '2412'
-
 MAPPING = {
     # url: (wanted_column_names)
     # QUARTER_MAPPING
@@ -65,7 +63,7 @@ def parse_fubon_url(url, wanted):
                 periods = [x.replace('.1~4Q', '') for x in items[1:]]
             elif col_name in wanted and periods:
                 for i, data in enumerate(items[1:]):
-                    value = float(data.replace(',', ''))
+                    value = soup_helper.to_float(data)
                     var_name, unit = FIELDS[col_name]
                     result.setdefault(periods[i], {})[var_name] = value * unit
     return result
@@ -81,7 +79,10 @@ def run_once(stock_no):
     common.save_finance_report(stock_no, result)
 
 if __name__ == '__main__':
-    run_once(STOCK_NO)
+    catalog = common.load_catalog()
+    for catagory, stocks in catalog.items():
+        for stock_no in stocks:
+            run_once(stock_no)
 
 
 # deprecated: use parse_fubon_url instead
@@ -101,7 +102,7 @@ def parse_fubon_url_id(url, wanted):
         col_name = items[0].strip()
         if col_name in wanted:
             for i, data in enumerate(items[1:]):
-                value = float(data.replace(',', ''))
+                value = soup_helper.to_float(data)
                 var_name, unit = FIELDS[col_name]
                 result.setdefault(periods[i], {})[var_name] = value * unit
     return result

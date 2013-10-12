@@ -1,4 +1,4 @@
-
+#-*- encoding: utf8 -*-
 def get_by_id(bs, idstr):
     return bs.find_all(id=idstr)[0]
 
@@ -21,3 +21,10 @@ def expend_row(bstr):
     for c in list_elements(bstr.children):
         ret.append(c.string)
     return ret
+
+def to_float(s):
+    t = s.strip().replace(',', '')
+    if t in (u'-', u'－', u'N/A'):
+        return 0
+    return float(t)
+

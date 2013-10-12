@@ -74,12 +74,6 @@ COLUMN_IDXES = {
     'amount': 7,
 }
 
-def _float(s):
-    t = s.strip().replace(',', '')
-    if t in (u'-', u'－'):
-        return 0
-    return float(t)
-
 def get_category_stock_info(url):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
     trs = bs.find_all('tr')
@@ -98,7 +92,7 @@ def get_category_stock_info(url):
             stock_no = stock_info[0]
             name = stock_info[1] 
             for var, idx in COLUMN_IDXES.items():
-                result.setdefault(stock_no, {})[var] = _float(tds[idx].text)
+                result.setdefault(stock_no, {})[var] = soup_helper.to_float(tds[idx].text)
             result[stock_no]['name'] = name
       except:
         print tr

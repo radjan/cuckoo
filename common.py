@@ -3,6 +3,7 @@ import os
 try:
     import simplejson as json
 except:
+    print "simplejson not installed"
     import json
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
