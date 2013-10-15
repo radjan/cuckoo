@@ -100,7 +100,7 @@ def get_category_stock_info(url):
         raise
     return data_date, result
 
-if '__main__' == __name__:
+def main():
     catalog = {}
     for catalog_key, url in CATELOG.items():
         data_date, result = get_category_stock_info(url)
@@ -119,3 +119,6 @@ if '__main__' == __name__:
             print 'NO  STOCK FOUND!!!!'
             print catalog_key, url
     common.save_catalog(catalog)
+
+if '__main__' == __name__:
+    main()

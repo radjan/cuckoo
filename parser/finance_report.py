@@ -78,12 +78,14 @@ def run_once(stock_no):
 
     common.save_finance_report(stock_no, result)
 
-if __name__ == '__main__':
+def main():
     catalog = common.load_catalog()
     for catagory, stocks in catalog.items():
         for stock_no in stocks:
             run_once(stock_no)
 
+if __name__ == '__main__':
+    main()
 
 # deprecated: use parse_fubon_url instead
 def parse_fubon_url_id(url, wanted):
