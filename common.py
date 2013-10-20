@@ -39,7 +39,7 @@ def save_finance_report(stock_no, result_dict):
     _save_file(FINANCE_REPORT % stock_no, result_dict)
 
 def load_finance_report(stock_no):
-    return _load_file(FINANCE_REPORT, default={})
+    return _load_file(FINANCE_REPORT % stock_no, default={})
 
 def save_daily_report(stock_no, data):
     _save_file(DAILY_REPORT % stock_no, data)
