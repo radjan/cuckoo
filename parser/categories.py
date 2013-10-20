@@ -102,8 +102,18 @@ def get_category_stock_info(url):
 
 def main():
     catalog = {}
+    curr_data_date = None
+    state = common.load_state()
     for catalog_key, url in CATELOG.items():
         data_date, result = get_category_stock_info(url)
+        if curr_data_date is None:
+            curr_data_date = data_date
+        elif curr_data_date != data_date:
+            common.report_error(
+                'Data date is not the same!'\
+                ' curr_data_date: %s, data_date: %s, url: %s'\
+                % (curr_data_date, data_date, url))
+
         stype, category = catalog_key
         for stock_no, data in result.items():
             daily_report = common.load_daily_report(stock_no)
@@ -119,6 +129,8 @@ def main():
             print 'NO  STOCK FOUND!!!!'
             print catalog_key, url
     common.save_catalog(catalog)
+    state[common.CURRENT_DATA_DATE] = curr_data_date
+    common.save_state(state)
 
 if '__main__' == __name__:
     main()
