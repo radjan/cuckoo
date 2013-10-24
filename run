@@ -1,5 +1,10 @@
-export PYTHONPATH=.:$PYTHONPATH
-python parser/categories.py
+APP_ENV=/home/rad/env/cuckoo
+export PATH=${APP_ENV}/bin:$PATH
+
+PROJECT_ROOT=/home/rad/repo/cuckoo
+export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
+
+python ${PROJECT_ROOT}/parser/categories.py
 #python parser/parser.py
 #python analyzer/analyzer.py
 #python notifier/notifier.py
