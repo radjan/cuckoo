@@ -1,7 +1,6 @@
-APP_ENV=/home/rad/env/cuckoo
-export PATH=${APP_ENV}/bin:$PATH
-
 PROJECT_ROOT=/home/rad/repo/cuckoo
+
+export PATH=${PROJECT_ROOT}/env/bin:$PATH
 export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
 
 python ${PROJECT_ROOT}/parser/categories.py
