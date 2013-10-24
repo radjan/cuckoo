@@ -125,9 +125,7 @@ def main():
             catalog.setdefault(SEPARATOR.join(catalog_key), []).append(stock_no)
 
         if not catalog.setdefault(SEPARATOR.join(catalog_key), []):
-            # TODO: error notification
-            print 'NO  STOCK FOUND!!!!'
-            print catalog_key, url
+            common.report_error('NO  STOCK FOUND!!!! %s, %s' % (catalog_key, url))
     common.save_catalog(catalog)
     state[common.CURRENT_DATA_DATE] = curr_data_date
     common.save_state(state)
