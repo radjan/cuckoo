@@ -89,8 +89,9 @@ def get_category_stock_info(url):
                 data_date = txt[len(d_str):].strip()
         if len(tds) == 13 and len(tds[STOCK_NO_IDX].text.split(' ')) == 2:
             stock_info = tds[STOCK_NO_IDX].text.split(' ')
+            stock_info = [txt.strip() for txt in stock_info]
             stock_no = stock_info[0]
-            name = stock_info[1] 
+            name = stock_info[1]
             for var, idx in COLUMN_IDXES.items():
                 result.setdefault(stock_no, {})[var] = soup_helper.to_float(tds[idx].text)
             result[stock_no]['name'] = name
