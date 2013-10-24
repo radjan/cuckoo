@@ -1,0 +1,5 @@
+export PYTHONPATH=.:$PYTHONPATH
+python parser/categories.py
+#python parser/parser.py
+#python analyzer/analyzer.py
+#python notifier/notifier.py
