@@ -6,9 +6,6 @@ from bs4 import BeautifulSoup
 import soup_helper
 import common
 
-MILLION = 1000000
-ONE = 1
-PERCENTAGE = 0.01
 COL_PERIOD = u'期別'
 
 MAPPING = {
@@ -32,20 +29,6 @@ MAPPING = {
         (u'營業毛利率', u'負債比率'),
 }
 
-FIELDS = {
-        # column_name: (variable_name, unit)
-        u'資產總額': ('total_assets', MILLION),
-        u'負債總額': ('total_debts', MILLION),
-        u'稅前淨利': ('net_income_before_tax', MILLION),
-        u'每股盈餘(元)': ('eps', ONE),
-        u'稅後淨利': ('net_income_after_tax', MILLION),
-        u'經常利益': ('net_income_afetr_tax', MILLION),
-        u'本期稅後淨利': ('net_income_after_tax_this', MILLION),
-        u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
-        u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
-        u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
-}
-
 def parse_fubon_url(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
@@ -64,7 +47,7 @@ def parse_fubon_url(url, wanted):
             elif col_name in wanted and periods:
                 for i, data in enumerate(items[1:]):
                     value = soup_helper.to_float(data)
-                    var_name, unit = FIELDS[col_name]
+                    var_name, unit = common.FIELDS[col_name]
                     result.setdefault(periods[i], {})[var_name] = value * unit
     return result
 
@@ -105,7 +88,7 @@ def parse_fubon_url_id(url, wanted):
         if col_name in wanted:
             for i, data in enumerate(items[1:]):
                 value = soup_helper.to_float(data)
-                var_name, unit = FIELDS[col_name]
+                var_name, unit = common.FIELDS[col_name]
                 result.setdefault(periods[i], {})[var_name] = value * unit
     return result
 
