@@ -1,3 +1,4 @@
+# -*- encoding: utf8 -*-
 import os
 
 try:
@@ -6,16 +7,38 @@ except:
     print "simplejson not installed"
     import json
 
+LAST_YEAR = 'last_year'
+
+MILLION = 1000000
+ONE = 1
+PERCENTAGE = 0.01
+
+FIELDS = {
+        # column_name: (variable_name, unit)
+        u'資產總額': ('total_assets', MILLION),
+        u'負債總額': ('total_debts', MILLION),
+        u'稅前淨利': ('net_income_before_tax', MILLION),
+        u'每股盈餘(元)': ('eps', ONE),
+        u'稅後淨利': ('net_income_after_tax', MILLION),
+        u'經常利益': ('net_income_afetr_tax', MILLION),
+        u'本期稅後淨利': ('net_income_after_tax_this', MILLION),
+        u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
+        u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
+        u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
+}
+
 CURRENT_DATA_DATE = 'current_data_date'
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
-FINANCE_REPORT = os.path.join(ROOT, 'stocks/%s.finance.json')
-DAILY_REPORT = os.path.join(ROOT, 'stocks/%s.daily.json')
+STOCK_REPORT = os.path.join(ROOT, 'stocks/%s.json')
 STOCK_CATALOG = os.path.join(ROOT, 'catalog.json')
 STATE= os.path.join(ROOT, 'state.json')
 CONFIG= os.path.join(ROOT, 'config.json')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
+
+FINANCE = 'finance'
+DAILY = 'daily'
 
 def report_error(msg):
     errors = load_error()
@@ -35,17 +58,31 @@ def _load_file(path, default=DEFAULT_RAISE):
             raise
         return default
 
-def save_finance_report(stock_no, result_dict):
-    _save_file(FINANCE_REPORT % stock_no, result_dict)
+def save_finance_report(stock_no, data):
+    path = STOCK_REPORT % stock_no
+    d = _load_file(path, default={})
+    d[FINANCE] = data
+    _save_file(path, d)
 
 def load_finance_report(stock_no):
-    return _load_file(FINANCE_REPORT % stock_no, default={})
+    return _load_file(STOCK_REPORT % stock_no, default={}).get(FINANCE, {})
 
 def save_daily_report(stock_no, data):
-    _save_file(DAILY_REPORT % stock_no, data)
+    path = STOCK_REPORT % stock_no
+    d = _load_file(path, default={})
+    d[DAILY] = data
+    _save_file(path, d)
 
 def load_daily_report(stock_no):
-    return _load_file(DAILY_REPORT % stock_no, default={})
+    return _load_file(STOCK_REPORT % stock_no, default={}).get(DAILY, {})
+
+def load_stock(stock_no):
+    return _load_file(STOCK_REPORT % stock_no)
+
+def save_stock(stock_no, data):
+    assert FINANCE in data
+    assert DAILY in data
+    _save_file(STOCK_REPORT % stock_no, data)
 
 def load_catalog():
     return _load_file(STOCK_CATALOG, default={})
