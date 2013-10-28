@@ -7,7 +7,10 @@ except:
     print "simplejson not installed"
     import json
 
+META = 'meta'
 LAST_YEAR = 'last_year'
+LAST_4Q = 'last_4q'
+LAST_4Q_YEAR = 'last_4q_year'
 
 MILLION = 1000000
 ONE = 1
@@ -25,6 +28,9 @@ FIELDS = {
         u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
         u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
         u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
+
+        u'總資產報酬率': ('roa', PERCENTAGE),
+        u'權責發生額': ('accrual', MILLION),
 }
 
 CURRENT_DATA_DATE = 'current_data_date'
@@ -32,18 +38,24 @@ CURRENT_DATA_DATE = 'current_data_date'
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
 STOCK_REPORT = os.path.join(ROOT, 'stocks/%s.json')
 STOCK_CATALOG = os.path.join(ROOT, 'catalog.json')
-STATE= os.path.join(ROOT, 'state.json')
-CONFIG= os.path.join(ROOT, 'config.json')
+STATE = os.path.join(ROOT, 'state.json')
+CONFIG = os.path.join(ROOT, 'config.json')
+ERRORS = os.path.join(ROOT, 'erorrsjson')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
 
 FINANCE = 'finance'
 DAILY = 'daily'
 
+error_tmp = None
+
 def report_error(msg):
-    errors = load_error()
+    global error_tmp
+    if error_tmp is None:
+        error_tmp = load_errors()
+    errors = error_tmp
     errors.append(msg)
-    save_error(errors)
+    save_errors(errors)
 
 def _save_file(path, data):
     with open(path, 'wr') as f:
@@ -102,9 +114,9 @@ def load_config():
 def save_config(data):
     _save_file(CONFIG, data)
 
-def load_error():
-    return _load_file(ERROR, default={})
+def load_errors():
+    return _load_file(ERRORS, default=[])
 
-def save_error(data):
-    _save_file(ERROR, data)
+def save_errors(data):
+    _save_file(ERRORS, data)
 
