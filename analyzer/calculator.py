@@ -3,6 +3,10 @@
 import common
 
 def calculate(stock_no):
+    '''
+    calculate accrual for last year and last 4Q
+    calculate roa for every finance report
+    '''
     stock_data = _prepare(stock_no)
     finance = stock_data[common.FINANCE]
 
@@ -30,7 +34,7 @@ def calculate(stock_no):
             roa = f[_field_name(u'稅前淨利')] / f[_field_name(u'資產總額')]
             f[_field_name(u'總資產報酬率')] = roa
         except Exception as e:
-            msg = '%s: %s, calculate failed: %s %s' % (stock_no, period, type(e), e.message)
+            msg = '%s: %s, ROA failed: %s %s' % (stock_no, period, type(e), e.message)
             common.report_error(msg)
 
     common.save_stock(stock_no, stock_data)
