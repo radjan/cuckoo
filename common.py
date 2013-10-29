@@ -31,6 +31,10 @@ FIELDS = {
 
         u'總資產報酬率': ('roa', PERCENTAGE),
         u'權責發生額': ('accrual', MILLION),
+        u'本益比': ('per', PERCENTAGE),
+        u'4Q本益比': ('per_4q', PERCENTAGE),
+        u'股價': ('price', ONE),
+        u'成交量': ('amount', ONE),
 }
 
 CURRENT_DATA_DATE = 'current_data_date'
