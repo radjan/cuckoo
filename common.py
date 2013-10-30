@@ -12,6 +12,11 @@ LAST_YEAR = 'last_year'
 LAST_4Q = 'last_4q'
 LAST_4Q_YEAR = 'last_4q_year'
 
+TOTAL = 'total'
+
+AVG_COUNT = '__count'
+AVG_SUM = '__sum'
+
 MILLION = 1000000
 ONE = 1
 PERCENTAGE = 0.01
@@ -42,9 +47,10 @@ CURRENT_DATA_DATE = 'current_data_date'
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
 STOCK_REPORT = os.path.join(ROOT, 'stocks/%s.json')
 STOCK_CATALOG = os.path.join(ROOT, 'catalog.json')
+AVERAGE_CATEGORY = os.path.join(ROOT, 'category_avg.json')
 STATE = os.path.join(ROOT, 'state.json')
 CONFIG = os.path.join(ROOT, 'config.json')
-ERRORS = os.path.join(ROOT, 'erorrsjson')
+ERRORS = os.path.join(ROOT, 'erorrs.json')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
 
@@ -105,6 +111,12 @@ def load_catalog():
 
 def save_catalog(data):
     _save_file(STOCK_CATALOG, data)
+
+def load_categories():
+    return _load_file(AVERAGE_CATEGORY, default={})
+
+def save_categories(data):
+    _save_file(AVERAGE_CATEGORY, data)
 
 def load_state():
     return _load_file(STATE, default={})
