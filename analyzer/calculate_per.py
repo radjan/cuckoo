@@ -7,7 +7,11 @@ def calculate_per(stock_no, average_data):
     calculate p/e ratio for last year and last 4Q
     '''
     stock_data = common.load_stock(stock_no)
-    finance = stock_data[common.FINANCE]
+    if common.FINANCE in stock_data:
+        finance = stock_data[common.FINANCE]
+    else:
+        common.report_error('%s does not have finance report!!' % stock_no)
+        return
 
     daily_prices = stock_data[common.DAILY]
     # day format exampe: 101/10/28
