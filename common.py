@@ -31,6 +31,7 @@ FIELDS = {
         u'經常利益': ('net_income_afetr_tax', MILLION),
         u'本期稅後淨利': ('net_income_after_tax_this', MILLION),
         u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
+        u'來自營運之現金流量': ('cash_flow_operating', MILLION),
         u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
         u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
 

@@ -17,7 +17,7 @@ MAPPING = {
         (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利'),
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc3_%s.djhtm': # 現金流量季表
         #(u'稅後淨利', u'投資活動之現金流量'),
-        (u'投資活動之現金流量',),
+        (u'投資活動之現金流量', u'來自營運之現金流量'),
     'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcr_%s.djhtm': # 財務比率季表
         (u'營業毛利率', u'負債比率'),
     # ANNUAL_MAPPING
