@@ -11,6 +11,8 @@ META = 'meta'
 LAST_YEAR = 'last_year'
 LAST_4Q = 'last_4q'
 LAST_4Q_YEAR = 'last_4q_year'
+ANNUALS = 'annuals'
+QUARTERS = 'quarters'
 
 TOTAL = 'total'
 

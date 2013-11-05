@@ -82,6 +82,8 @@ def _prepare(stock_no):
     stock_data[common.META] = {
         common.LAST_YEAR: last_year,
         common.LAST_4Q: last4Q,
+        common.ANNUALS: annuals,
+        common.QUARTERS: quarters,
         }
     return stock_data
 
