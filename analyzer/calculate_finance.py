@@ -21,8 +21,8 @@ def calculate(stock_no):
             if y:
                 f = finance[y]
             if f:
-                # accrual 權責發生額 = 稅後純利 - 投資活動之現金流量
-                accrual = f[_field_name(u'本期稅後淨利')] - f[_field_name(u'投資活動之現金流量')]
+                # accrual 權責發生額 = 稅後純利 - 來自營運之現金流量
+                accrual = f[_field_name(u'本期稅後淨利')] - f[_field_name(u'來自營運之現金流量')]
                 f[_field_name(u'權責發生額')] = accrual
         except Exception as e:
             msg = '%s: %s, accrual failed: %s %s' % (stock_no, y, type(e), e.message)
