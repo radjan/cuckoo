@@ -1,11 +1,14 @@
 # -*- encoding: utf8 -*-
 import os
+import atexit
 
 try:
     import simplejson as json
 except:
     print "simplejson not installed"
     import json
+
+KEY_STOCKS = 'stocks'
 
 META = 'meta'
 LAST_YEAR = 'last_year'
@@ -46,6 +49,7 @@ FIELDS = {
         u'4Q本益比': ('per_4q', PERCENTAGE),
         u'股價': ('price', ONE),
         u'成交量': ('amount', ONE),
+        u'殖利率': ('yield_rate', PERCENTAGE),
 }
 
 FIELD_NAMES = dict(((v[0], k) for k, v in FIELDS.items()))
@@ -62,6 +66,7 @@ AVERAGE_CATEGORY = os.path.join(ROOT, 'category_avg.json')
 STATE = os.path.join(ROOT, 'state.json')
 CONFIG = os.path.join(ROOT, 'config.json')
 ERRORS = os.path.join(ROOT, 'erorrs.json')
+FILTER_RESULTS = os.path.join(ROOT, 'filter_results.json')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
 
@@ -74,9 +79,9 @@ def report_error(msg):
     global error_tmp
     if error_tmp is None:
         error_tmp = load_errors()
+        atexit.register(save_errors, data=error_tmp)
     errors = error_tmp
     errors.append(msg)
-    save_errors(errors)
 
 def _save_file(path, data):
     with open(path, 'wr') as f:
@@ -134,6 +139,12 @@ def load_state():
 
 def save_state(data):
     _save_file(STATE, data)
+
+def load_filter_results():
+    return _load_file(FILTER_RESULTS, default={})
+
+def save_filter_results(data):
+    _save_file(FILTER_RESULTS, data)
 
 def load_config():
     return _load_file(CONFIG, default={})
