@@ -36,6 +36,9 @@ FIELDS = {
         u'來自營運之現金流量': ('cash_flow_operating', MILLION),
         u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
         u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
+        u'現金股利': ('dividend_cash', ONE),
+        u'股票股利': ('dividend_stock', ONE),
+        u'股利': ('dividend', ONE),
 
         u'總資產報酬率': ('roa', PERCENTAGE),
         u'權責發生額': ('accrual', MILLION),
@@ -44,6 +47,11 @@ FIELDS = {
         u'股價': ('price', ONE),
         u'成交量': ('amount', ONE),
 }
+
+FIELD_NAMES = dict(((v[0], k) for k, v in FIELDS.items()))
+
+def field_var(unicode_str):
+    return FIELDS.get(unicode_str, (None,))[0]
 
 CURRENT_DATA_DATE = 'current_data_date'
 

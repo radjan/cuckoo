@@ -29,6 +29,8 @@ MAPPING = {
         (u'營業毛利率', u'負債比率'),
 }
 
+DIVIDEND_URL = 'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcc/zcc_%s.djhtm'
+
 def parse_fubon_url(url, wanted):
     bs = BeautifulSoup(urllib2.urlopen(url), 'lxml')
 
@@ -51,12 +53,41 @@ def parse_fubon_url(url, wanted):
                     result.setdefault(periods[i], {})[var_name] = value * unit
     return result
 
+def parse_dividend(stock_no):
+    def _key(s):
+        return s if s != u'合計' else u'股利'
+
+    bs = BeautifulSoup(urllib2.urlopen(DIVIDEND_URL % stock_no), 'lxml')
+
+    titles = None
+    result = {}
+
+    trs = bs.find_all('tr')
+    for tr in trs:
+        items = soup_helper.expend_row(tr)
+        if len(items) != 7:
+            continue
+        # title first
+        if titles is None:
+            # 年度, 現金股利, 盈餘配股, 公積配股, 股票股利, 合計, 員工配股率%
+            titles = [_key(k) for k in items]
+        else:
+            wanted = (1, 4, 5)
+            d = {}
+            for idx in wanted:
+                var_name, unit = common.FIELDS[titles[idx]]
+                d[var_name] = soup_helper.to_float(items[idx]) * unit
+            result[items[0]] = d
+    return result
+
 def run_once(stock_no):
     result = common.load_finance_report(stock_no)
     for url, wanted in MAPPING.items():
         url = url % stock_no
         parsed = parse_fubon_url(url, wanted)
         for period, values in parsed.items():
+            result.setdefault(period, {}).update(values)
+    for period, values in parse_dividend(stock_no).items():
             result.setdefault(period, {}).update(values)
 
     common.save_finance_report(stock_no, result)
