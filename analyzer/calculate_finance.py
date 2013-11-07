@@ -15,12 +15,13 @@ def calculate(stock_no):
     key_net_income_before_tax = _field_name(u'稅前淨利')
     key_total_assets = _field_name(u'資產總額')
 
-    for y in (common.LAST_4Q_YEAR, stock_data[common.META][common.LAST_YEAR]):
+    meta = stock_data[common.META]
+    for y in (common.LAST_4Q_YEAR, meta[common.LAST_YEAR]):
         try:
             f = None
             if y:
                 f = finance[y]
-            if f:
+            if f and len(meta[common.LAST_4Q]) == 4:
                 # accrual 權責發生額 = 稅後純利 - 來自營運之現金流量
                 accrual = f[_field_name(u'本期稅後淨利')] - f[_field_name(u'來自營運之現金流量')]
                 f[_field_name(u'權責發生額')] = accrual
@@ -31,8 +32,11 @@ def calculate(stock_no):
     for period, f in finance.items():
         try:
             # ROA ＝ 稅前純利 / 資產總額
-            roa = f[_field_name(u'稅前淨利')] / f[_field_name(u'資產總額')]
-            f[_field_name(u'總資產報酬率')] = roa
+            var1 = _field_name(u'稅前淨利')
+            var2 = _field_name(u'資產總額')
+            if var1 in f and var2 in f:
+                roa = f[var1] / f[var2]
+                f[_field_name(u'總資產報酬率')] = roa
         except Exception as e:
             msg = '%s: %s, ROA failed: %s %s' % (stock_no, period, type(e), e.message)
             common.report_error(msg)
@@ -41,7 +45,7 @@ def calculate(stock_no):
 
 def _prepare(stock_no):
     '''
-    calculate the missing annual cash_flow_of_investment from quarter report,
+    calculate the missing annual cash_flow_operating from quarter report,
     calculate last 4Q data
     '''
     stock_data = common.load_stock(stock_no)
@@ -56,7 +60,7 @@ def _prepare(stock_no):
 
     last_year = None
     for year in annuals:
-        field_name = _field_name(u'投資活動之現金流量')
+        field_name = _field_name(u'來自營運之現金流量')
         if field_name in finance[year]:
             if last_year is None:
                 last_year = year
@@ -64,8 +68,8 @@ def _prepare(stock_no):
         year_q = [year + q for q in ('.1Q', '.2Q', '.3Q', '.4Q')]
         # not calculate if there is data missing
         if all([yq in quarters and field_name in finance[yq] for yq in year_q]):
-            cash_flow_of_investment = sum((finance[yq][field_name] for yq in year_q))
-            finance[year][field_name] = cash_flow_of_investment
+            cash_flow_operating = sum((finance[yq][field_name] for yq in year_q))
+            finance[year][field_name] = cash_flow_operating
             if last_year is None:
                 last_year = year
 
