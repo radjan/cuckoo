@@ -9,6 +9,7 @@ except:
     import json
 
 KEY_STOCKS = 'stocks'
+KEY_MISSING_DATA = 'missing_data'
 
 META = 'meta'
 LAST_YEAR = 'last_year'
