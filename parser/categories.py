@@ -117,13 +117,20 @@ def main():
 
         stype, category = catalog_key
         for stock_no, data in result.items():
-            daily_report = common.load_daily_report(stock_no)
-            daily_report['type'] = stype
-            daily_report['category'] = category
-            daily_report['name'] = data.pop('name')
+            stock_data = common.load_stock(stock_no)
+            daily_report = stock_data.setdefault(common.DAILY, {})
             daily_report[data_date] = data
-            common.save_daily_report(stock_no, daily_report)
-            catalog.setdefault(SEPARATOR.join(catalog_key), []).append(stock_no)
+            category_key = SEPARATOR.join(catalog_key)
+            meta = {
+                common.META_STOCK_NO: stock_no,
+                common.META_COMPANY_TYPE: stype,
+                common.META_COMPANY_CATEGORY: category,
+                common.META_CATEGORY_KEY: category_key,
+                common.META_NAME: data.pop('name'),
+            }
+            stock_data.setdefault(common.META, {}).update(meta)
+            common.save_stock(stock_no, stock_data)
+            catalog.setdefault(category_key, []).append(stock_no)
 
         if not catalog.setdefault(SEPARATOR.join(catalog_key), []):
             common.report_error('NO  STOCK FOUND!!!! %s, %s' % (catalog_key, url))
