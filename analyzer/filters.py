@@ -27,21 +27,26 @@ def kazuyo_katsuma(stock_no, stock_data):
 
     return continous(quarters[:5], roa_growth)
 
+out = {}
+
 def old_brother(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
     meta = stock_data[common.META]
     last_year = meta[common.LAST_YEAR]
 
     wanted = (common.LAST_4Q_YEAR, last_year)
+    global out
     for y in wanted:
         if not y:
             raise NoData("Missing last_year report")
         if not enough_value(finance[y], u'權責發生額', 0, period=y,
                             reverse=True):
+            out[u'權責發生額'] = out.get(u'權責發生額', 0) + 1
             return False
 
     if not enough_value(finance[last_year], u'股利',
                         0.05, period=last_year):
+        out[u'股利'] = out.get(u'股利', 0) + 1
         return False
 
     recent_years = meta[common.ANNUALS][:3]
@@ -51,15 +56,16 @@ def old_brother(stock_no, stock_data):
         if not all((enough_value(report, u'營業毛利率', 0.3, period=y),
                     enough_value(report, u'負債比率', 0.3, period=y,
                                  reverse=True))):
+            out[u'毛利＋負債'] = out.get(u'毛利＋負債', 0) + 1
             return False
 
-    def loose_eps_growth(y1, _y2, y3):
-        var = common.field_name(u'每股盈餘(元)')
+    def loose_eps_growth(y1, y2):
+        var = common.field_var(u'每股盈餘(元)')
         f1 = finance[y1]
-        f3 = finance[y3]
-        return f1[var] - f3[var] > 0
+        f2 = finance[y2]
+        return f1[var] - f2[var] > 0
 
-    return continous(recent_years, losseps_growth, window=3)
+    return continous(recent_years, loose_eps_growth, window=2)
 
 def negative_accrual(finance_report, period=None):
     accrual = common.field_var(u'權責發生額')
@@ -89,19 +95,23 @@ def main():
         for stock_no in stocks:
             stock_data = common.load_stock(stock_no)
             for filter_name, filter_func in filters.items():
+                data = result.setdefault(filter_name, {})
+                data.setdefault(common.KEY_STOCKS, [])
+                data.setdefault(common.KEY_MISSING_DATA, [])
                 try:
                     if filter_func(stock_no, stock_data):
-                        data = result.setdefault(filter_name, {})
-                        data.setdefault(common.KEY_STOCKS, []).append(stock_no)
+                        data[common.KEY_STOCKS].append(stock_no)
                 except NoData as e:
-                    data = result.setdefault(filter_name, {})
-                    data.setdefault(common.KEY_MISSING_DATA, []).append(stock_no)
+                    data[common.KEY_MISSING_DATA].append(stock_no)
                 except Exception as e:
                     print stock_no
                     raise
 
     for k, v in result.items():
         print k, len(v[common.KEY_STOCKS]), len(v[common.KEY_MISSING_DATA])
+    global out
+    for k, v in out.items():
+        print k, v 
     common.save_filter_results(result)
 
 filters = {
