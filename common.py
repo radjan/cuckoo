@@ -11,12 +11,18 @@ except:
 KEY_STOCKS = 'stocks'
 KEY_MISSING_DATA = 'missing_data'
 
+LAST_4Q_YEAR = 'last_4q_year'
+
 META = 'meta'
 LAST_YEAR = 'last_year'
 LAST_4Q = 'last_4q'
-LAST_4Q_YEAR = 'last_4q_year'
 ANNUALS = 'annuals'
 QUARTERS = 'quarters'
+META_STOCK_NO = 'stock_no'
+META_NAME = 'name'
+META_COMPANY_TYPE = 'company_type'
+META_COMPANY_CATEGORY = 'company_category'
+META_CATEGORY_KEY = 'category_key'
 
 TOTAL = 'total'
 
@@ -95,7 +101,7 @@ def report_error(msg):
 
 def _save_file(path, data):
     with open(path, 'wr') as f:
-        json.dump(data, f, ensure_ascii=False)
+        json.dump(data, f)
 
 def _load_file(path, default=DEFAULT_RAISE):
     try:
