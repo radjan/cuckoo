@@ -2,7 +2,7 @@
 
 import common
 
-def calculate_per(stock_no, average_data):
+def calculate(stock_no, average_data):
     '''
     calculate p/e ratio for last year and last 4Q
     '''
@@ -24,29 +24,30 @@ def calculate_per(stock_no, average_data):
 
     for y in (common.LAST_4Q_YEAR, last_year):
         f = finance.get(y, None)
-        if f:
-            for field in (u'本益比', u'4Q本益比'):
-                try:
-                    # per 本益比 = 股價 / 每股盈餘(元)
-                    eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
-                    if eps > 0:
-                        per = latest_price / f[common.field_var(u'每股盈餘(元)')]
-                    else:
-                        per = 0
-                    field_name = common.field_var(field)
-                    latest_daily[field_name] = per
+        if not f:
+            continue
+        for field in (u'本益比', u'4Q本益比'):
+            try:
+                # per 本益比 = 股價 / 每股盈餘(元)
+                eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
+                if eps > 0:
+                    per = latest_price / f[common.field_var(u'每股盈餘(元)')]
+                else:
+                    per = 0
+                field_name = common.field_var(field)
+                latest_daily[field_name] = per
 
-                    # data for average per
-                    for postfix in (common.AVG_SUM, common.AVG_COUNT):
-                        k = field_name + postfix
-                        if k not in average_day:
-                            average_day[k] = 0
-                    if per > 0:
-                        average_day[field_name + common.AVG_SUM] += per
-                        average_day[field_name + common.AVG_COUNT] += 1
-                except Exception as e:
-                    msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
-                    common.report_error(msg)
+                # data for average per
+                for postfix in (common.AVG_SUM, common.AVG_COUNT):
+                    k = field_name + postfix
+                    if k not in average_day:
+                        average_day[k] = 0
+                if per > 0:
+                    average_day[field_name + common.AVG_SUM] += per
+                    average_day[field_name + common.AVG_COUNT] += 1
+            except Exception as e:
+                msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
+                common.report_error(msg)
 
     common.save_stock(stock_no, stock_data)
 
@@ -71,7 +72,7 @@ def main():
         average_data = categories.setdefault(category, {})
         for stock_no in stocks:
             try:
-                latest_day = calculate_per(stock_no, average_data)
+                latest_day = calculate(stock_no, average_data)
             except:
                 print stock_no
                 raise
