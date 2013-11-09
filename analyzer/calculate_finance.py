@@ -80,7 +80,10 @@ def _prepare(stock_no):
         # not calculate if there is data missing
         if all((f in finance[q] for q in last4Q for f in fields)):
             for field in fields:
-                last_4q_year[field] = sum((finance[q][field] for q in last4Q))
+                value = sum((finance[q][field] for q in last4Q))
+                if common.field_unit(field) == common.PERCENTAGE:
+                    value = value / len(last4Q)
+                last_4q_year[field] = value
     finance[common.LAST_4Q_YEAR] = last_4q_year
 
     stock_data[common.META] = {

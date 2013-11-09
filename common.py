@@ -58,6 +58,15 @@ FIELD_NAMES = dict(((v[0], k) for k, v in FIELDS.items()))
 def field_var(unicode_str):
     return FIELDS.get(unicode_str, (None,))[0]
 
+def field_name(var):
+    return FIELD_NAMES.get(var, None)
+
+def field_unit(var_or_name):
+    name = field_name(var_or_name)
+    if name is None:
+        name = var_or_name
+    return FIELDS.get(name, (None, None))[1]
+
 CURRENT_DATA_DATE = 'current_data_date'
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
