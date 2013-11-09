@@ -95,7 +95,7 @@ def report_error(msg):
 
 def _save_file(path, data):
     with open(path, 'wr') as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
 
 def _load_file(path, default=DEFAULT_RAISE):
     try:
