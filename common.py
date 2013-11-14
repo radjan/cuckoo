@@ -131,7 +131,8 @@ def load_daily_report(stock_no):
     return _load_file(STOCK_REPORT % stock_no, default={}).get(DAILY, {})
 
 def load_stock(stock_no):
-    return _load_file(STOCK_REPORT % stock_no, default={DAILY:{}, FINANCE:{}})
+    return _load_file(STOCK_REPORT % stock_no,
+                      default={DAILY:{}, FINANCE:{}, META: {}})
 
 def save_stock(stock_no, data):
     assert FINANCE in data
