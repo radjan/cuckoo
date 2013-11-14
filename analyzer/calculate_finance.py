@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 
+import sys
 import common
 
 def calculate(stock_no):
@@ -128,4 +129,7 @@ def main():
                 raise
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 2:
+        calculate(sys.argv[1])
+    else:
+        main()

@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 
+import sys
 import urllib2
 from bs4 import BeautifulSoup
 
@@ -99,7 +100,10 @@ def main():
             run_once(stock_no)
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) == 2:
+        run_once(sys.argv[1])
+    else:
+        main()
 
 # deprecated: use parse_fubon_url instead
 def parse_fubon_url_id(url, wanted):
