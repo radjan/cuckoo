@@ -20,7 +20,7 @@ def calculate(stock_no, average_data):
 
     average_day = average_data.setdefault(latest_day, {})
 
-    last_year = stock_data[common.META][common.LAST_YEAR]
+    last_year = stock_data[common.META].get(common.LAST_YEAR, None)
 
     for y in (common.LAST_4Q_YEAR, last_year):
         f = finance.get(y, None)
@@ -48,6 +48,14 @@ def calculate(stock_no, average_data):
             except Exception as e:
                 msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
                 common.report_error(msg)
+
+    # 殖利率 = 股價 / 最近一年股利
+    f = finance.get(last_year, None)
+    if f:
+        dividend = f.get(common.field_var(u'股利'), 0)
+        if dividend:
+            yield_rate = latest_price / dividend
+            latest_daily[common.field_var(u'殖利率')] = yield_rate
 
     common.save_stock(stock_no, stock_data)
 
