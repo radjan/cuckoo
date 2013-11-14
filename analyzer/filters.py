@@ -44,9 +44,12 @@ def old_brother(stock_no, stock_data):
             out[u'權責發生額'] = out.get(u'權責發生額', 0) + 1
             return False
 
-    if not enough_value(finance[last_year], u'股利',
-                        0.05, period=last_year):
-        out[u'股利'] = out.get(u'股利', 0) + 1
+    daily_reports = stock_data[common.DAILY]
+    latest_day = sorted(daily_reports.keys(), reverse=True)[0]
+    latest_report = daily_reports[latest_day]
+    if not enough_value(latest_report, u'殖利率',
+                        0.05, period=latest_day):
+        out[u'殖利率'] = out.get(u'殖利率', 0) + 1
         return False
 
     recent_years = meta[common.ANNUALS][:3]
@@ -59,13 +62,13 @@ def old_brother(stock_no, stock_data):
             out[u'毛利＋負債'] = out.get(u'毛利＋負債', 0) + 1
             return False
 
-    def loose_eps_growth(y1, y2):
+    def loose_eps_growth(y1, _y2, y3):
         var = common.field_var(u'每股盈餘(元)')
         f1 = finance[y1]
-        f2 = finance[y2]
-        return f1[var] - f2[var] > 0
+        f3 = finance[y3]
+        return f1[var] - f3[var] > 0
 
-    return continous(recent_years, loose_eps_growth, window=2)
+    return continous(recent_years, loose_eps_growth, window=3)
 
 def negative_accrual(finance_report, period=None):
     accrual = common.field_var(u'權責發生額')
