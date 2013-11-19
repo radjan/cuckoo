@@ -36,3 +36,6 @@ nosetests.xml
 
 # data
 *.json
+
+#vi
+*.swp
