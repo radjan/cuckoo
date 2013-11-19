@@ -4,7 +4,11 @@ export PATH=${PROJECT_ROOT}/env/bin:$PATH
 export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
 
 python ${PROJECT_ROOT}/parser/categories.py
+if [ $? != 0 ]; then
+    exit $?
+fi
+
 python ${PROJECT_ROOT}/analyzer/calculate_daily.py
-#python parser/parser.py
-#python analyzer/analyzer.py
-#python notifier/notifier.py
+if [ $? != 0 ]; then
+    exit $?
+fi
