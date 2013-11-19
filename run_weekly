@@ -1,0 +1,14 @@
+PROJECT_ROOT=/home/rad/repo/cuckoo
+
+export PATH=${PROJECT_ROOT}/env/bin:$PATH
+export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
+
+python ${PROJECT_ROOT}/parser/finance_report.py
+if [ $? != 0 ]; then
+    exit $?
+fi
+
+python ${PROJECT_ROOT}/analyzer/calculate_finance.py
+if [ $? != 0 ]; then
+    exit $?
+fi
