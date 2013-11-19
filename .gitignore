@@ -39,3 +39,6 @@ nosetests.xml
 
 #vi
 *.swp
+
+#tar.gz
+*.tar.gz
