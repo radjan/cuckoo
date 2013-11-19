@@ -1,0 +1,18 @@
+PROJECT_ROOT=/home/rad/repo/cuckoo
+
+${PROJECT_ROOT}/run
+if [ $? != 0 ]; then
+    exit $?
+fi
+
+# backup 8 days
+for i in {7..0}
+do
+    backup_file=${PROJECT_ROOT}/backup/data.${i}.tar.gz
+    echo $backup_file
+    if [ -f $backup_file ]; then
+        echo ' move!'
+        mv $backup_file ${PROJECT_ROOT}/backup/data.$[$i+1].tar.gz
+    fi
+done
+tar -zcf ${PROJECT_ROOT}/backup/data.0.tar.gz ${PROJECT_ROOT}/data
