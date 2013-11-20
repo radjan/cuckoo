@@ -1,5 +1,7 @@
 # -*- encoding: utf8 -*-
 
+import traceback
+
 import common
 
 def calculate(stock_no, average_data):
@@ -10,6 +12,7 @@ def calculate(stock_no, average_data):
     finance = stock_data.get(common.FINANCE, None)
     if not finance:
         common.report_error('%s does not have finance report!!' % stock_no)
+        # XXX new stock no, trigger parse finance report and calculate
         return
 
     daily_prices = stock_data[common.DAILY]
@@ -88,4 +91,8 @@ def main():
     common.save_categories(categories)
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        common.report_error(traceback.format_exc(e))
+        raise

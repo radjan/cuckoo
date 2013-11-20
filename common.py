@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 import os
+import sys
 import atexit
 
 try:
@@ -92,6 +93,7 @@ DAILY = 'daily'
 error_tmp = None
 
 def report_error(msg):
+    print >> sys.stderr, msg
     global error_tmp
     if error_tmp is None:
         error_tmp = load_errors()

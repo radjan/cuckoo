@@ -1,5 +1,7 @@
 # -*- encoding: utf8 -*-
 
+import traceback
+
 import urllib2
 from bs4 import BeautifulSoup
 
@@ -139,4 +141,8 @@ def main():
     common.save_state(state)
 
 if '__main__' == __name__:
-    main()
+    try:
+        main()
+    except Exception as e:
+        common.report_error(traceback.format_exc(e))
+        raise

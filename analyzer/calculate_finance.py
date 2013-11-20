@@ -1,6 +1,7 @@
 # -*- encoding: utf8 -*-
 
 import sys
+import traceback
 import common
 
 def calculate(stock_no):
@@ -129,7 +130,11 @@ def main():
                 raise
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2:
-        calculate(sys.argv[1])
-    else:
-        main()
+    try:
+        if len(sys.argv) == 2:
+            calculate(sys.argv[1])
+        else:
+            main()
+    except Exception as e:
+        common.report_error(traceback.format_exc(e))
+        raise
