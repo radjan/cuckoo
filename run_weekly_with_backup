@@ -1,16 +1,19 @@
 PROJECT_ROOT=/home/rad/repo/cuckoo
 
+cd ${PROJECT_ROOT}
+
 ${PROJECT_ROOT}/run_weekly
-if [ $? != 0 ]; then
-    exit $?
+RET=$?
+if [ $RET != 0 ]; then
+    exit $RET
 fi
 
 # backup 5 weeks
 for i in {4..0}
 do
-    backup_file=${PROJECT_ROOT}/backup/data_week.${i}.tar.gz
-    if [ -f $backup_file]; then
-        mv $backup_file ${PROJECT_ROOT}/backup/data_week.$[$i+1].tar.gz
+    backup_file=backup/data_week.${i}.tar.gz
+    if [ -f $backup_file ]; then
+        mv $backup_file backup/data_week.$[$i+1].tar.gz
     fi
 done
-tar -zcf ${PROJECT_ROOT}/backup/data_week.0.tar.gz ${PROJECT_ROOT}/data
+tar -zcf backup/data_week.0.tar.gz data
