@@ -4,10 +4,11 @@ import traceback
 
 import common
 
-def calculate(stock_no, average_data):
+def calculate_latest_day(stock_no, average_data):
     '''
     calculate p/e ratio for last year and last 4Q
     '''
+
     stock_data = common.load_stock(stock_no)
     finance = stock_data.get(common.FINANCE, None)
     if not finance:
@@ -18,10 +19,21 @@ def calculate(stock_no, average_data):
     daily_prices = stock_data[common.DAILY]
     # day format exampe: 101/10/28
     latest_day = sorted((k for k in daily_prices.keys() if k[0].isdigit()), reverse=True)[0]
-    latest_daily = daily_prices[latest_day]
-    latest_price = latest_daily[common.field_var(u'股價')]
 
-    average_day = average_data.setdefault(latest_day, {})
+    calculate_day(latest_day, stock_data, average_data, stock_no=stock_no)
+
+    common.save_stock(stock_no, stock_data)
+
+    return latest_day
+
+def calculate_day(day, stock_data, average_data, stock_no=None):
+    average_day = average_data.setdefault(day, {})
+
+    finance = stock_data[common.FINANCE]
+
+    daily_prices = stock_data[common.DAILY]
+    daily = daily_prices[day]
+    price = daily[common.field_var(u'股價')]
 
     last_year = stock_data[common.META].get(common.LAST_YEAR, None)
 
@@ -34,11 +46,11 @@ def calculate(stock_no, average_data):
                 # per 本益比 = 股價 / 每股盈餘(元)
                 eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
                 if eps > 0:
-                    per = latest_price / f[common.field_var(u'每股盈餘(元)')]
+                    per = price / f[common.field_var(u'每股盈餘(元)')]
                 else:
                     per = 0
                 field_name = common.field_var(field)
-                latest_daily[field_name] = per
+                daily[field_name] = per
 
                 # data for average per
                 for postfix in (common.AVG_SUM, common.AVG_COUNT):
@@ -57,12 +69,9 @@ def calculate(stock_no, average_data):
     if f:
         dividend = f.get(common.field_var(u'股利'), 0)
         if dividend:
-            yield_rate = latest_price / dividend
-            latest_daily[common.field_var(u'殖利率')] = yield_rate
+            yield_rate = price / dividend
+            daily[common.field_var(u'殖利率')] = yield_rate
 
-    common.save_stock(stock_no, stock_data)
-
-    return latest_day
 
 def calculate_average_per(average_day, total):
     average_day[common.TOTAL] = total
@@ -83,9 +92,9 @@ def main():
         average_data = categories.setdefault(category, {})
         for stock_no in stocks:
             try:
-                latest_day = calculate(stock_no, average_data)
+                latest_day = calculate_latest_day(stock_no, average_data)
             except:
-                print stock_no
+                common.report_error('%s calculation failed' % stock_no)
                 raise
         calculate_average_per(average_data[latest_day], len(stocks))
     common.save_categories(categories)
