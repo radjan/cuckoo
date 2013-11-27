@@ -11,6 +11,8 @@ class NoData(Exception):
 def kazuyo_katsuma(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
     meta = stock_data[common.META]
+    if common.LAST_YEAR not in meta:
+        raise NoData('missing last_year finance report')
     wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])
     #wanted = (meta[common.LAST_YEAR],)
     for y in wanted:
@@ -35,6 +37,8 @@ out = {}
 def old_brother(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
     meta = stock_data[common.META]
+    if common.LAST_YEAR not in meta:
+        raise NoData('missing last_year finance report')
     last_year = meta[common.LAST_YEAR]
 
     wanted = (common.LAST_4Q_YEAR, last_year)
