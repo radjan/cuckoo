@@ -24,6 +24,7 @@ META_NAME = 'name'
 META_COMPANY_TYPE = 'company_type'
 META_COMPANY_CATEGORY = 'company_category'
 META_CATEGORY_KEY = 'category_key'
+META_DAYS = 'days'
 
 TOTAL = 'total'
 
@@ -74,6 +75,11 @@ def field_unit(var_or_name):
         name = var_or_name
     return FIELDS.get(name, (None, None))[1]
 
+def get_latest_day(stock_data):
+    if META_DAYS in stock_data[META]:
+        return stock_data[META][META_DAYS][0]
+    return sorted(stock_data[DAILY].keys(), reverse=True)[0]
+
 CURRENT_DATA_DATE = 'current_data_date'
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
@@ -84,6 +90,7 @@ STATE = os.path.join(ROOT, 'state.json')
 CONFIG = os.path.join(ROOT, 'config.json')
 ERRORS = os.path.join(ROOT, 'erorrs.json')
 FILTER_RESULTS = os.path.join(ROOT, 'filter_results.json')
+INDICATOR_RESULTS = os.path.join(ROOT, 'indicator_results.json')
 
 DEFAULT_RAISE = 'DEFAULT_RAISE'
 
@@ -164,6 +171,12 @@ def load_filter_results():
 
 def save_filter_results(data):
     _save_file(FILTER_RESULTS, data)
+
+def load_indicator_results():
+    return _load_file(INDICATOR_RESULTS, default={})
+
+def save_indicator_results(data):
+    _save_file(INDICATOR_RESULTS, data)
 
 def load_config():
     return _load_file(CONFIG, default={})
