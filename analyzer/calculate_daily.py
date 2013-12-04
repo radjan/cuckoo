@@ -69,7 +69,7 @@ def calculate_day(day, stock_data, average_data, stock_no=None):
     if f:
         dividend = f.get(common.field_var(u'股利'), 0)
         if dividend:
-            yield_rate = price / dividend
+            yield_rate = dividend / price
             daily[common.field_var(u'殖利率')] = yield_rate
 
 
