@@ -129,6 +129,7 @@ def main():
                 common.META_COMPANY_CATEGORY: category,
                 common.META_CATEGORY_KEY: category_key,
                 common.META_NAME: data.pop('name'),
+                common.META_DAYS: sorted(daily_report.keys(), reverse=True),
             }
             stock_data.setdefault(common.META, {}).update(meta)
             common.save_stock(stock_no, stock_data)
