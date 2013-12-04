@@ -1,5 +1,12 @@
+# filter names
 KAZUYO_KATSUMA = 'kazuyo_katsuma'
 OLD_BROTHER = 'old_brother'
+
+# indicator names
+PER_LOW = 'per_low'
+PER_HIGH = 'per_high'
+AMOUNT_LOW = 'amount_low'
+AMOUNT_HIGH = 'amount_high'
 
 preferences = {
     'yuntai': {
