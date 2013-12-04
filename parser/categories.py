@@ -121,16 +121,17 @@ def main():
         for stock_no, data in result.items():
             stock_data = common.load_stock(stock_no)
             daily_report = stock_data.setdefault(common.DAILY, {})
+            meta= stock_data.setdefault(common.META, {})
             daily_report[data_date] = data
             category_key = SEPARATOR.join(catalog_key)
-            meta = {
+            meta.update({
                 common.META_STOCK_NO: stock_no,
                 common.META_COMPANY_TYPE: stype,
                 common.META_COMPANY_CATEGORY: category,
                 common.META_CATEGORY_KEY: category_key,
                 common.META_NAME: data.pop('name'),
                 common.META_DAYS: sorted(daily_report.keys(), reverse=True),
-            }
+            })
             stock_data.setdefault(common.META, {}).update(meta)
             common.save_stock(stock_no, stock_data)
             catalog.setdefault(category_key, []).append(stock_no)

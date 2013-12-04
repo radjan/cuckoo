@@ -24,7 +24,7 @@ def calculate(stock_no):
             if y:
                 f = finance[y]
             if f and len(meta[common.LAST_4Q]) == 4:
-                # accrual 權責發生額 = 稅後純利 - 來自營運之現金流量
+                # accrual 權責發生額 = 本期稅後淨利 - 來自營運之現金流量
                 accrual = f[_field_name(u'本期稅後淨利')] - f[_field_name(u'來自營運之現金流量')]
                 f[_field_name(u'權責發生額')] = accrual
         except Exception as e:
@@ -88,12 +88,12 @@ def _prepare(stock_no):
                 last_4q_year[field] = value
     finance[common.LAST_4Q_YEAR] = last_4q_year
 
-    stock_data[common.META] = {
+    stock_data[common.META].update({
         common.LAST_YEAR: last_year,
         common.LAST_4Q: last4Q,
         common.ANNUALS: annuals,
         common.QUARTERS: quarters,
-        }
+        })
     return stock_data
 
 def _to_number(s):
