@@ -42,10 +42,10 @@ def amount_high(stock_data, share_data):
     return latest_amount > avg_amount * 1.5
 
 MAPPINGS = {
-    'per_low': per_low,
-    'per_high': per_high,
-    'amount_low': amount_low,
-    'amount_high': amount_high,
+    config.PER_LOW: per_low,
+    config.PER_HIGH: per_high,
+    config.AMOUNT_LOW: amount_low,
+    config.AMOUNT_HIGH: amount_high,
     }
 
 def _gather_stocks():
@@ -68,8 +68,7 @@ def main():
         stock_data = common.load_stock(no)
         for n, func in MAPPINGS.items():
             indicators[no][n] = func(stock_data, share_data)
-    import pprint
-    pprint.pprint(indicators)
+    common.save_indicator_results(indicators)
 
 if __name__ == '__main__':
     try:
