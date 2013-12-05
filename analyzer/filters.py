@@ -18,6 +18,8 @@ def kazuyo_katsuma(stock_no, stock_data):
     for y in wanted:
         if not y:
             raise NoData("Missing last_year report")
+        if not enough_value(finance[y], u'本期稅後淨利', 0.0, period=y):
+            return False
         if not negative_accrual(finance[y], period=y):
             return False
     quarters = meta[common.QUARTERS]
@@ -121,7 +123,7 @@ def main():
         print k, len(v[common.KEY_STOCKS]), len(v[common.KEY_MISSING_DATA])
     global out
     for k, v in out.items():
-        print k, v 
+        print k, v
     common.save_filter_results(result)
 
 filters = {
