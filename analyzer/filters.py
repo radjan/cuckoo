@@ -34,8 +34,6 @@ def kazuyo_katsuma(stock_no, stock_data):
 
     return continous(quarters[:5], roa_growth)
 
-out = {}
-
 def old_brother(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
     meta = stock_data[common.META]
@@ -44,13 +42,13 @@ def old_brother(stock_no, stock_data):
     last_year = meta[common.LAST_YEAR]
 
     wanted = (common.LAST_4Q_YEAR, last_year)
-    global out
     for y in wanted:
         if not y:
             raise NoData("Missing last_year report")
+        if not enough_value(finance[y], u'本期稅後淨利', 0.0, period=y):
+            return False
         if not enough_value(finance[y], u'權責發生額', 0, period=y,
                             reverse=True):
-            out[u'權責發生額'] = out.get(u'權責發生額', 0) + 1
             return False
 
     daily_reports = stock_data[common.DAILY]
@@ -58,7 +56,6 @@ def old_brother(stock_no, stock_data):
     latest_report = daily_reports[latest_day]
     if not enough_value(latest_report, u'殖利率',
                         0.05, period=latest_day):
-        out[u'殖利率'] = out.get(u'殖利率', 0) + 1
         return False
 
     recent_years = meta[common.ANNUALS][:3]
@@ -67,8 +64,8 @@ def old_brother(stock_no, stock_data):
         report = finance[y]
         if not all((enough_value(report, u'營業毛利率', 0.3, period=y),
                     enough_value(report, u'負債比率', 0.3, period=y,
-                                 reverse=True))):
-            out[u'毛利＋負債'] = out.get(u'毛利＋負債', 0) + 1
+                                 reverse=True),
+                    enough_value(report, u'每股盈餘(元)', 0, period=y))):
             return False
 
     def loose_eps_growth(y1, _y2, y3):
@@ -121,9 +118,6 @@ def main():
 
     for k, v in result.items():
         print k, len(v[common.KEY_STOCKS]), len(v[common.KEY_MISSING_DATA])
-    global out
-    for k, v in out.items():
-        print k, v
     common.save_filter_results(result)
 
 filters = {
