@@ -14,3 +14,15 @@ RET=$?
 if [ $RET != 0 ]; then
     exit $RET
 fi
+
+python ${PROJECT_ROOT}/analyzer/filters.py
+RET=$?
+if [ $RET != 0 ]; then
+    exit $RET
+fi
+
+python ${PROJECT_ROOT}/analyzer/indicators.py
+RET=$?
+if [ $RET != 0 ]; then
+    exit $RET
+fi
