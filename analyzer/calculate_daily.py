@@ -37,32 +37,34 @@ def calculate_day(day, stock_data, average_data, stock_no=None):
 
     last_year = stock_data[common.META].get(common.LAST_YEAR, None)
 
-    for y in (common.LAST_4Q_YEAR, last_year):
+    for y, field in ((common.LAST_4Q_YEAR, u'4Q本益比'),
+                     (last_year, u'本益比')):
         f = finance.get(y, None)
         if not f:
             continue
-        for field in (u'本益比', u'4Q本益比'):
-            try:
-                # per 本益比 = 股價 / 每股盈餘(元)
-                eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
-                if eps > 0:
-                    per = price / f[common.field_var(u'每股盈餘(元)')]
-                else:
-                    per = 0
-                field_name = common.field_var(field)
-                daily[field_name] = per
+        try:
+            # per 本益比 = 股價 / 每股盈餘(元)
+            eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
+            if eps > 0:
+                per = price / eps
+                if stock_no == '3189':
+                    print '%s: %s = %s / %s' % (y, per, price, eps)
+            else:
+                per = 0
+            field_name = common.field_var(field)
+            daily[field_name] = per
 
-                # data for average per
-                for postfix in (common.AVG_SUM, common.AVG_COUNT):
-                    k = field_name + postfix
-                    if k not in average_day:
-                        average_day[k] = 0
-                if per > 0:
-                    average_day[field_name + common.AVG_SUM] += per
-                    average_day[field_name + common.AVG_COUNT] += 1
-            except Exception as e:
-                msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
-                common.report_error(msg)
+            # data for average per
+            for postfix in (common.AVG_SUM, common.AVG_COUNT):
+                k = field_name + postfix
+                if k not in average_day:
+                    average_day[k] = 0
+            if per > 0:
+                average_day[field_name + common.AVG_SUM] += per
+                average_day[field_name + common.AVG_COUNT] += 1
+        except Exception as e:
+            msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
+            common.report_error(msg)
 
     # 殖利率 = 股價 / 最近一年股利
     f = finance.get(last_year, None)
