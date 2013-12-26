@@ -62,7 +62,7 @@ def format_basic(stock_data, data=None):
         data.add(f, _format_float(_get(day, var)))
     return data
 
-def format_by_indicator(indicators, stock_data, share_data=None, data=None, verbose=True):
+def format_by_indicator(indicators, stock_data, share_data=None, data=None, verbose=False):
     """" format by indicator """
     data = data if data is not None else PresentData(u'股票')
     for name, yn in indicators.items():
@@ -93,11 +93,13 @@ def kazuyo_katsuma(data, yn, stock_data, share_data, verbose=False):
 
     for q in meta[common.QUARTERS][:5]:
         q_f = finance[q]
-        q_sec = section
         if verbose:
-            q_sec = section.add_section(q)
-        roa_sec = q_sec.add_section(u'總資產報酬率')
-        roa_sec.add(q, _get(q_f, common.field_var(u'總資產報酬率')))
+            roa_sec = section.add_section(q)
+            var_name = u'總資產報酬率'
+        else:
+            roa_sec = section.add_section(u'總資產報酬率')
+            var_name = q
+        roa_sec.add(var_name, _get(q_f, common.field_var(u'總資產報酬率')))
         if verbose:
             for f in (u'稅前純利', u'資產總額'):
                 _add_finance_field(roa_sec, q_f, f)
