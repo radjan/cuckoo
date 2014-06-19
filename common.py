@@ -80,7 +80,54 @@ def get_latest_day(stock_data):
         return stock_data[META][META_DAYS][0]
     return sorted(stock_data[DAILY].keys(), reverse=True)[0]
 
+import firebase
+FIREBASE_URL = 'https://resplendent-fire-6708.firebaseio.com'
+fb = firebase.firebase.FirebaseApplication(FIREBASE_URL)
+
 CURRENT_DATA_DATE = 'current_data_date'
+
+FIREBASE_ROOT = '/cuckoo'
+FIREBASE_ESCAPE = {
+    '/': '%%slash%%',
+    '.': '%%dot%%',
+    }
+def escape(s):
+    for k, v in FIREBASE_ESCAPE.items():
+        s = s.replace(k, v)
+    return s
+
+def unescape(s):
+    for k, v in FIREBASE_ESCAPE.items():
+        s = s.replace(v, k)
+    return s
+
+def escape_dict(d):
+    if type(d) is not dict:
+        return d
+    kv = []
+    for k, v in d.items():
+        e_k = escape(k)
+        if type(v) is dict:
+            v = escape_dict(v)
+        if k != e_k:
+            kv.append((k, e_k, v))
+    for k, e_k, v in kv:
+        d[e_k] = v
+        del d[k]
+    return d
+
+def unescape_dict(d):
+    kv = []
+    for e_k, v in d.items():
+        k = unescape(e_k)
+        if type(v) is dict:
+            v = unescape_dict(v)
+        if k != e_k:
+            kv.append((k, e_k, v))
+    for k, e_k, v in kv:
+        d[k] = v
+        del d[e_k]
+    return d
 
 ROOT = os.path.join(os.path.dirname(__file__), 'data')
 STOCK_REPORT = os.path.join(ROOT, 'stocks/%s.json')
@@ -111,6 +158,8 @@ def report_error(msg):
 def _save_file(path, data):
     with open(path, 'wr') as f:
         json.dump(data, f)
+    fb_path = path[len(ROOT)+1:-len('.json')]
+    fb.put(FIREBASE_ROOT, fb_path, escape_dict(data))
 
 def _load_file(path, default=DEFAULT_RAISE):
     try:
