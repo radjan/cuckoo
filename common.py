@@ -9,6 +9,12 @@ except:
     print "simplejson not installed"
     import json
 
+# Save/Load control flags
+LOCAL = '_local_'
+FIREBASE = '_firebase_'
+READ_FROM = FIREBASE
+SAVE_TO = (LOCAL,)
+
 KEY_STOCKS = 'stocks'
 KEY_MISSING_DATA = 'missing_data'
 
@@ -156,19 +162,32 @@ def report_error(msg):
     errors.append(msg)
 
 def _save_file(path, data):
-    with open(path, 'wr') as f:
-        json.dump(data, f)
-    fb_path = path[len(ROOT)+1:-len('.json')]
-    fb.put(FIREBASE_ROOT, fb_path, escape_dict(data))
+    if LOCAL in SAVE_TO:
+        with open(path, 'wr') as f:
+            json.dump(data, f)
+    if FIREBASE in SAVE_TO:
+        fb_path = path[len(ROOT)+1:-len('.json')]
+        fb.put(FIREBASE_ROOT, fb_path, escape_dict(data))
 
 def _load_file(path, default=DEFAULT_RAISE):
-    try:
-        with open(path, 'r') as f:
-            return json.load(f)
-    except IOError:
-        if default == DEFAULT_RAISE:
-            raise
-        return default
+    if READ_FROM == FIREBASE:
+        fb_path = path[len(ROOT)+1:-len('.json')]
+        result = fb.get(os.path.join(FIREBASE_ROOT, fb_path), None)
+        if result is None:
+            if default == DEFAULT_RAISE:
+                raise Exception('Data %s not fuound' % path)
+            result = default
+        return result
+    elif READ_FROM == LOCAL:
+        try:
+            with open(path, 'r') as f:
+                return json.load(f)
+        except IOError:
+            if default == DEFAULT_RAISE:
+                raise
+            return default
+    else:
+        raise NotImplemented('Unknown data source: %s' % READ_FROM)
 
 def save_finance_report(stock_no, data):
     path = STOCK_REPORT % stock_no
@@ -193,9 +212,13 @@ def load_stock(stock_no):
                       default={DAILY:{}, FINANCE:{}, META: {}})
 
 def save_stock(stock_no, data):
-    assert FINANCE in data
-    assert DAILY in data
-    _save_file(STOCK_REPORT % stock_no, data)
+    try:
+        assert FINANCE in data
+        assert DAILY in data
+        _save_file(STOCK_REPORT % stock_no, data)
+    except:
+        print >> sys.stderr, stock_no, data
+        raise
 
 def load_catalog():
     return _load_file(STOCK_CATALOG, default={})
