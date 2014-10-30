@@ -145,6 +145,9 @@ ERRORS = os.path.join(ROOT, 'erorrs.json')
 FILTER_RESULTS = os.path.join(ROOT, 'filter_results.json')
 INDICATOR_RESULTS = os.path.join(ROOT, 'indicator_results.json')
 
+if not os.path.exists(os.path.join(ROOT, 'stocks')):
+    os.mkdir(os.path.join(ROOT, 'stocks'))
+
 DEFAULT_RAISE = 'DEFAULT_RAISE'
 
 FINANCE = 'finance'
@@ -209,7 +212,9 @@ def load_daily_report(stock_no):
 
 def load_stock(stock_no):
     return _load_file(STOCK_REPORT % stock_no,
-                      default={DAILY:{}, FINANCE:{}, META: {}})
+                      default={DAILY:{'_': '_'},
+                               FINANCE:{'_': '_'},
+                               META: {'_': '_'}})
 
 def save_stock(stock_no, data):
     try:
