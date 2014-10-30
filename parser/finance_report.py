@@ -94,18 +94,35 @@ def run_once(stock_no):
 
     common.save_finance_report(stock_no, result)
 
-def main():
+def main(no=-1):
     catalog = common.load_catalog()
-    for catagory, stocks in catalog.items():
-        for stock_no in stocks:
-            run_once(stock_no)
+    todo = []
+    if no == -1:
+        for _c, s in catalog.items():
+            todo.append(s)
+    else:
+        for i, (_c, s) in enumerate(catalog.items()):
+            if no == i:
+                todo.extend(s)
+    total = len(todo)
+    count = 0
+    print 'total', total
+    for stock_no in todo:
+        count += 1
+        if count % 10 == 0:
+            print '%s/%s' % (count, total)
+        run_once(stock_no)
+    print 'done'
 
 if __name__ == '__main__':
     try:
+        no = -1
         if len(sys.argv) == 2:
-            run_once(sys.argv[1])
-        else:
-            main()
+            no = int(sys.argv[1])
+            if no >= 1000:
+                run_once(no)
+                sys.exit()
+        main(no)
     except Exception as e:
         common.report_error(traceback.format_exc(e))
         raise
