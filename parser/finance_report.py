@@ -99,7 +99,7 @@ def main(no=-1):
     todo = []
     if no == -1:
         for _c, s in catalog.items():
-            todo.append(s)
+            todo.extend(s)
     else:
         for i, (_c, s) in enumerate(catalog.items()):
             if no == i:
@@ -119,7 +119,7 @@ if __name__ == '__main__':
         no = -1
         if len(sys.argv) == 2:
             no = int(sys.argv[1])
-            if no >= 1000:
+            if no >= 100:
                 run_once(no)
                 sys.exit()
         main(no)
