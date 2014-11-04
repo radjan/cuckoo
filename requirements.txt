@@ -1,5 +1,6 @@
 simplejson>=3.6.5
 beautifulsoup4>=4.3.2
+lxml>=3.4.0
 click>=3.3
 python-firebase>=1.2
 progressbar2>=2.6.7
