@@ -12,7 +12,7 @@ except:
 # Save/Load control flags
 LOCAL = '_local_'
 FIREBASE = '_firebase_'
-READ_FROM = FIREBASE
+READ_FROM = LOCAL
 SAVE_TO = (LOCAL,)
 
 KEY_STOCKS = 'stocks'
@@ -123,6 +123,11 @@ def escape_dict(d):
     return d
 
 def unescape_dict(d):
+    if type(d) is list:
+        return [unescape_dict(x) for x in d]
+    elif type(d) is not dict:
+        return d
+
     kv = []
     for e_k, v in d.items():
         k = unescape(e_k)
@@ -180,7 +185,7 @@ def _load_file(path, default=DEFAULT_RAISE):
             if default == DEFAULT_RAISE:
                 raise Exception('Data %s not fuound' % path)
             result = default
-        return result
+        return unescape_dict(result)
     elif READ_FROM == LOCAL:
         try:
             with open(path, 'r') as f:
