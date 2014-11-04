@@ -14,8 +14,7 @@ OPTIONS = (LOCAL, FIREBASE)
 @click.option('-t', '--save_to',
               prompt='Save to? (%s/%s)' % (LOCAL, FIREBASE))
 def transfer(read_from, save_to):
-    click.echo('Read from %s' % read_from)
-    click.echo('Save to %s' % save_to)
+    click.echo('%s --> %s' % (read_from, save_to))
     if read_from not in OPTIONS or save_to not in OPTIONS:
         print 'Should be %s or %s' % (LOCAL, FIREBASE)
         sys.exit(-1)

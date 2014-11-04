@@ -27,8 +27,7 @@ Data could store at local and firebase. For the first time use, you could transf
 [cchan@cchan cuckoo (master)]$ python transfer.py
 Read from? (local/firebase): firebase
 Save to? (local/firebase): local
-Read from firebase
-Save to local
+firebase --> local
 This will overwrite data in "local". Are you sure? [y/n]
 y
 ```
