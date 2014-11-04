@@ -28,7 +28,7 @@ Data could store at local and firebase. For the first time use, you could transf
 Read from? (local/firebase): firebase
 Save to? (local/firebase): local
 firebase --> local
-This will overwrite data in "local". Are you sure? [y/n]
+This will OVERWRITE data in "local". Are you sure? [y/n]
 y
 ```
 Storing in local json files is much faster but could not be shared. However, putting data in firebase could be single point of failure and data would be overwritten by each other. Please double check before overwriting data in firebase.

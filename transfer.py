@@ -21,7 +21,7 @@ def transfer(read_from, save_to):
     if read_from == save_to:
         print 'Saving data to where it is from does not make sense.'
         sys.exit(-2)
-    click.echo('This will overwrite data in "%s". Are you sure? [y/n]' % save_to)
+    click.echo('This will OVERWRITE data in "%s". Are you sure? [y/n]' % save_to)
     confirm = sys.stdin.readline()
     if confirm.strip() != 'y':
         print 'byebye~'
