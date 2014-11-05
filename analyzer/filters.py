@@ -5,8 +5,10 @@ import traceback
 import common
 import config
 
+
 class NoData(Exception):
     pass
+
 
 def kazuyo_katsuma(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
@@ -14,7 +16,7 @@ def kazuyo_katsuma(stock_no, stock_data):
     if common.LAST_YEAR not in meta:
         raise NoData('missing last_year finance report')
     wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])
-    #wanted = (meta[common.LAST_YEAR],)
+    # wanted = (meta[common.LAST_YEAR],)
     for y in wanted:
         if not y:
             raise NoData("Missing last_year report")
@@ -32,7 +34,12 @@ def kazuyo_katsuma(stock_no, stock_data):
             return qf[var_roa] - last_qf[var_roa] > 0
         raise NoData('Missing ROA data for %s or %s' % (q, last_q))
 
-    return continous(quarters[:5], roa_growth)
+    try:
+        return continous(quarters[:5], roa_growth)
+    except Exception, e:
+        print stock_no, e
+        raise
+
 
 def old_brother(stock_no, stock_data):
     finance = stock_data[common.FINANCE]
@@ -76,11 +83,13 @@ def old_brother(stock_no, stock_data):
 
     return continous(recent_years, loose_eps_growth, window=3)
 
+
 def negative_accrual(finance_report, period=None):
     accrual = common.field_var(u'權責發生額')
     if accrual in finance_report:
         return finance_report[accrual] < 0
     raise NoData('Missing accrual data for %s' % period)
+
 
 def enough_value(finance_report, field, threshold, period=None, reverse=False):
     var_name = common.field_var(field)
@@ -91,11 +100,14 @@ def enough_value(finance_report, field, threshold, period=None, reverse=False):
         return ret
     raise NoData('Missing %s data for %s' % (var_name, period))
 
+
 def continous(l, func, window=2):
     if l:
         interval = window - 1
-        return all([func(*(l[i] for i in xrange(x, x + window))) for x in xrange(len(l) - interval)])
+        return all([func(*(l[i] for i in xrange(x, x + window)))
+                    for x in xrange(len(l) - interval)])
     return False
+
 
 def main():
     result = {}
