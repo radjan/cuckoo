@@ -1,4 +1,4 @@
-PROJECT_ROOT=/home/rad/repo/cuckoo
+PROJECT_ROOT=`pwd`
 
 export PATH=${PROJECT_ROOT}/env/bin:$PATH
 export PYTHONPATH=${PROJECT_ROOT}:$PYTHONPATH
