@@ -4,6 +4,7 @@ import sys
 import traceback
 import common
 
+
 def calculate(stock_no):
     '''
     calculate accrual for last year and last 4Q
@@ -25,10 +26,12 @@ def calculate(stock_no):
                 f = finance[y]
             if f and len(meta[common.LAST_4Q]) == 4:
                 # accrual 權責發生額 = 本期稅後淨利 - 來自營運之現金流量
-                accrual = f[_field_name(u'本期稅後淨利')] - f[_field_name(u'來自營運之現金流量')]
+                accrual = f[_field_name(u'本期稅後淨利')] - \
+                    f[_field_name(u'來自營運之現金流量')]
                 f[_field_name(u'權責發生額')] = accrual
         except Exception as e:
-            msg = '%s: %s, accrual failed: %s %s' % (stock_no, y, type(e), e.message)
+            msg = '%s: %s, accrual failed: %s %s' % (stock_no, y,
+                                                     type(e), e.message)
             common.report_error(msg)
 
     for period, f in finance.items():
@@ -40,10 +43,12 @@ def calculate(stock_no):
                 roa = f[var1] / f[var2]
                 f[_field_name(u'總資產報酬率')] = roa
         except Exception as e:
-            msg = '%s: %s, ROA failed: %s %s' % (stock_no, period, type(e), e.message)
+            msg = '%s: %s, ROA failed: %s %s' % (stock_no, period,
+                                                 type(e), e.message)
             common.report_error(msg)
 
     common.save_stock(stock_no, stock_data)
+
 
 def _prepare(stock_no):
     '''
@@ -56,7 +61,8 @@ def _prepare(stock_no):
     annuals = sorted([k for k in finance.keys() if k.isdigit()],
                      key=_to_number,
                      reverse=True)
-    quarters = sorted([k for k in finance.keys() if k[-1] == 'Q' and '~' not in k],
+    quarters = sorted([k for k in finance.keys()
+                       if k[-1] == 'Q' and '~' not in k],
                       key=_to_number,
                       reverse=True)
 
@@ -69,8 +75,10 @@ def _prepare(stock_no):
             continue
         year_q = [year + q for q in ('.1Q', '.2Q', '.3Q', '.4Q')]
         # not calculate if there is data missing
-        if all([yq in quarters and field_name in finance[yq] for yq in year_q]):
-            cash_flow_operating = sum((finance[yq][field_name] for yq in year_q))
+        if all([yq in quarters and field_name in finance[yq]
+                for yq in year_q]):
+            cash_flow_operating = sum((finance[yq][field_name]
+                                       for yq in year_q))
             finance[year][field_name] = cash_flow_operating
             if last_year is None:
                 last_year = year
@@ -96,10 +104,12 @@ def _prepare(stock_no):
         })
     return stock_data
 
+
 def _to_number(s):
     if s[-1] == 'Q':
         s = s[:-1]
     return float(s)
+
 
 def _continous_q(quarters):
     # XXX it works
@@ -107,16 +117,19 @@ def _continous_q(quarters):
         curr = quarters[i].split('.')
         next_ = quarters[i+1].split('.')
         if curr[0] == next_[0]:
-            if (curr[1], next_[1]) not in (('4Q', '3Q'), ('3Q', '2Q'), ('2Q', '1Q'),):
+            if (curr[1], next_[1]) not in\
+                    (('4Q', '3Q'), ('3Q', '2Q'), ('2Q', '1Q'),):
                 return False
         else:
-            if not ((int(curr[0]) - int(next_[0])) == 1 and \
+            if not ((int(curr[0]) - int(next_[0])) == 1 and
                     (curr[1], next_[1]) == ('1Q', '4Q')):
                 return False
     return True
 
+
 def _field_name(key):
     return common.FIELDS[key][0]
+
 
 def main():
     common.save_errors([])

@@ -4,9 +4,11 @@ from progressbar import ProgressBar, FormatLabel
 
 import common
 
+
 LOCAL = 'local'
 FIREBASE = 'firebase'
 OPTIONS = (LOCAL, FIREBASE)
+
 
 @click.command()
 @click.option('-f', '--read_from',
@@ -21,14 +23,16 @@ def transfer(read_from, save_to):
     if read_from == save_to:
         print 'Saving data to where it is from does not make sense.'
         sys.exit(-2)
-    click.echo('This will OVERWRITE data in "%s". Are you sure? [y/n]' % save_to)
+    click.echo('This will OVERWRITE data in "%s". Are you sure? [y/n]'
+               % save_to)
     confirm = sys.stdin.readline()
     if confirm.strip() != 'y':
         print 'byebye~'
         return
 
     common.READ_FROM = common.LOCAL if read_from == LOCAL else common.FIREBASE
-    common.SAVE_TO = (common.LOCAL,) if save_to == LOCAL else (common.FIREBASE,)
+    common.SAVE_TO = (common.LOCAL,)\
+        if save_to == LOCAL else (common.FIREBASE,)
 
     print 'Transfering catalog...'
     catalog = common.load_catalog()
@@ -61,7 +65,8 @@ def transfer(read_from, save_to):
         todo.extends(stocks)
     total = len(todo)
     print 'Transfering sotcks...'
-    widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.format(total))]
+    widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
+                           format(total))]
     pbar = ProgressBar(widgets=widgets, maxval=total)
     count = 0
     pbar.start()
@@ -72,12 +77,13 @@ def transfer(read_from, save_to):
         count += 1
     pbar.finish()
 
+
 def load_errors():
     return _load_file(ERRORS, default=[])
 
+
 def save_errors(data):
     _save_file(ERRORS, data)
-
 
 
 if __name__ == '__main__':

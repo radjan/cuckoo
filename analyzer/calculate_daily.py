@@ -4,6 +4,7 @@ import traceback
 
 import common
 
+
 def calculate_latest_day(stock_no, average_data):
     '''
     calculate p/e ratio for last year and last 4Q
@@ -18,13 +19,15 @@ def calculate_latest_day(stock_no, average_data):
 
     daily_prices = stock_data[common.DAILY]
     # day format exampe: 101/10/28
-    latest_day = sorted((k for k in daily_prices.keys() if k[0].isdigit()), reverse=True)[0]
+    latest_day = sorted((k for k in daily_prices.keys()
+                         if k[0].isdigit()), reverse=True)[0]
 
     calculate_day(latest_day, stock_data, average_data, stock_no=stock_no)
 
     common.save_stock(stock_no, stock_data)
 
     return latest_day
+
 
 def calculate_day(day, stock_data, average_data, stock_no=None):
     average_day = average_data.setdefault(day, {})
@@ -63,7 +66,8 @@ def calculate_day(day, stock_data, average_data, stock_no=None):
                 average_day[field_name + common.AVG_SUM] += per
                 average_day[field_name + common.AVG_COUNT] += 1
         except Exception as e:
-            msg = '%s: %s, per failed: %s %s' % (stock_no, y, type(e), e.message)
+            msg = '%s: %s, per failed: %s %s' % (stock_no, y,
+                                                 type(e), e.message)
             common.report_error(msg)
 
     # 殖利率 = 股價 / 最近一年股利
@@ -85,6 +89,7 @@ def calculate_average_per(average_day, total):
         else:
             avg = 0
         average_day[field_name] = avg
+
 
 def main():
     common.save_errors([])

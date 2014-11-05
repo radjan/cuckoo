@@ -41,45 +41,48 @@ MILLION = 1000000
 ONE = 1
 PERCENTAGE = 0.01
 
-FIELDS = {
-        # column_name: (variable_name, unit)
-        u'資產總額': ('total_assets', MILLION),
-        u'負債總額': ('total_debts', MILLION),
-        u'稅前淨利': ('net_income_before_tax', MILLION),
-        u'每股盈餘(元)': ('eps', ONE),
-        u'稅後淨利': ('net_income_after_tax', MILLION),
-        u'經常利益': ('net_income_afetr_tax', MILLION),
-        u'本期稅後淨利': ('net_income_after_tax_this', MILLION),
-        u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
-        u'來自營運之現金流量': ('cash_flow_operating', MILLION),
-        u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
-        u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
-        u'現金股利': ('dividend_cash', ONE),
-        u'股票股利': ('dividend_stock', ONE),
-        u'股利': ('dividend', ONE),
+FIELDS = {  # column_name: (variable_name, unit)
+    u'資產總額': ('total_assets', MILLION),
+    u'負債總額': ('total_debts', MILLION),
+    u'稅前淨利': ('net_income_before_tax', MILLION),
+    u'每股盈餘(元)': ('eps', ONE),
+    u'稅後淨利': ('net_income_after_tax', MILLION),
+    u'經常利益': ('net_income_afetr_tax', MILLION),
+    u'本期稅後淨利': ('net_income_after_tax_this', MILLION),
+    u'投資活動之現金流量': ('cash_flow_of_investment', MILLION),
+    u'來自營運之現金流量': ('cash_flow_operating', MILLION),
+    u'營業毛利率': ('gross_margin_percentage', PERCENTAGE),
+    u'負債比率': ('debt_to_total_assets_ratio', PERCENTAGE),
+    u'現金股利': ('dividend_cash', ONE),
+    u'股票股利': ('dividend_stock', ONE),
+    u'股利': ('dividend', ONE),
 
-        u'總資產報酬率': ('roa', PERCENTAGE),
-        u'權責發生額': ('accrual', MILLION),
-        u'本益比': ('per', PERCENTAGE),
-        u'4Q本益比': ('per_4q', PERCENTAGE),
-        u'股價': ('price', ONE),
-        u'成交量': ('amount', ONE),
-        u'殖利率': ('yield_rate', PERCENTAGE),
+    u'總資產報酬率': ('roa', PERCENTAGE),
+    u'權責發生額': ('accrual', MILLION),
+    u'本益比': ('per', PERCENTAGE),
+    u'4Q本益比': ('per_4q', PERCENTAGE),
+    u'股價': ('price', ONE),
+    u'成交量': ('amount', ONE),
+    u'殖利率': ('yield_rate', PERCENTAGE),
 }
 
 FIELD_NAMES = dict(((v[0], k) for k, v in FIELDS.items()))
 
+
 def field_var(unicode_str):
     return FIELDS.get(unicode_str, (None,))[0]
 
+
 def field_name(var):
     return FIELD_NAMES.get(var, None)
+
 
 def field_unit(var_or_name):
     name = field_name(var_or_name)
     if name is None:
         name = var_or_name
     return FIELDS.get(name, (None, None))[1]
+
 
 def get_latest_day(stock_data):
     if META_DAYS in stock_data[META]:
@@ -97,15 +100,19 @@ FIREBASE_ESCAPE = {
     '/': '%%slash%%',
     '.': '%%dot%%',
     }
+
+
 def escape(s):
     for k, v in FIREBASE_ESCAPE.items():
         s = s.replace(k, v)
     return s
 
+
 def unescape(s):
     for k, v in FIREBASE_ESCAPE.items():
         s = s.replace(v, k)
     return s
+
 
 def escape_dict(d):
     if type(d) is not dict:
@@ -121,6 +128,7 @@ def escape_dict(d):
         d[e_k] = v
         del d[k]
     return d
+
 
 def unescape_dict(d):
     if type(d) is list:
@@ -160,6 +168,7 @@ DAILY = 'daily'
 
 error_tmp = None
 
+
 def report_error(msg):
     print >> sys.stderr, msg
     global error_tmp
@@ -169,6 +178,7 @@ def report_error(msg):
     errors = error_tmp
     errors.append(msg)
 
+
 def _save_file(path, data):
     if LOCAL in SAVE_TO:
         with open(path, 'wr') as f:
@@ -176,6 +186,7 @@ def _save_file(path, data):
     if FIREBASE in SAVE_TO:
         fb_path = path[len(ROOT)+1:-len('.json')]
         fb.put(FIREBASE_ROOT, fb_path, escape_dict(data))
+
 
 def _load_file(path, default=DEFAULT_RAISE):
     if READ_FROM == FIREBASE:
@@ -197,14 +208,17 @@ def _load_file(path, default=DEFAULT_RAISE):
     else:
         raise NotImplemented('Unknown data source: %s' % READ_FROM)
 
+
 def save_finance_report(stock_no, data):
     path = STOCK_REPORT % stock_no
     d = _load_file(path, default={})
     d[FINANCE] = data
     _save_file(path, d)
 
+
 def load_finance_report(stock_no):
     return _load_file(STOCK_REPORT % stock_no, default={}).get(FINANCE, {})
+
 
 def save_daily_report(stock_no, data):
     path = STOCK_REPORT % stock_no
@@ -212,14 +226,17 @@ def save_daily_report(stock_no, data):
     d[DAILY] = data
     _save_file(path, d)
 
+
 def load_daily_report(stock_no):
     return _load_file(STOCK_REPORT % stock_no, default={}).get(DAILY, {})
 
+
 def load_stock(stock_no):
     return _load_file(STOCK_REPORT % stock_no,
-                      default={DAILY:{'_': '_'},
-                               FINANCE:{'_': '_'},
+                      default={DAILY: {'_': '_'},
+                               FINANCE: {'_': '_'},
                                META: {'_': '_'}})
+
 
 def save_stock(stock_no, data):
     try:
@@ -230,45 +247,58 @@ def save_stock(stock_no, data):
         print >> sys.stderr, stock_no, data
         raise
 
+
 def load_catalog():
     return _load_file(STOCK_CATALOG, default={})
+
 
 def save_catalog(data):
     _save_file(STOCK_CATALOG, data)
 
+
 def load_categories():
     return _load_file(AVERAGE_CATEGORY, default={})
+
 
 def save_categories(data):
     _save_file(AVERAGE_CATEGORY, data)
 
+
 def load_state():
     return _load_file(STATE, default={})
+
 
 def save_state(data):
     _save_file(STATE, data)
 
+
 def load_filter_results():
     return _load_file(FILTER_RESULTS, default={})
+
 
 def save_filter_results(data):
     _save_file(FILTER_RESULTS, data)
 
+
 def load_indicator_results():
     return _load_file(INDICATOR_RESULTS, default={})
+
 
 def save_indicator_results(data):
     _save_file(INDICATOR_RESULTS, data)
 
+
 def load_config():
     return _load_file(CONFIG, default={})
+
 
 def save_config(data):
     _save_file(CONFIG, data)
 
+
 def load_errors():
     return _load_file(ERRORS, default=[])
 
+
 def save_errors(data):
     _save_file(ERRORS, data)
-

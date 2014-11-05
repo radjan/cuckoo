@@ -15,9 +15,11 @@ td { border: 1px solid black;}
 </style>
 """
 
+
 def main(fn=None, out_format='text'):
     output(fn, out_format=out_format)
     # TODO format html
+
 
 def output(fn, out_format):
     filter_results = common.load_filter_results()
@@ -33,11 +35,11 @@ def output(fn, out_format):
             ind[n] = s in v['stocks']
         results.append(format_report.format(sd, ind, categories))
 
-
     if out_format == 'text':
         format_text(results, fn)
     else:
         format_html(results, fn)
+
 
 def format_text(results, fn):
     def _to_text(title, values, idents=0):
@@ -46,7 +48,8 @@ def format_text(results, fn):
             indent_spaces = u' '*(idents+3)
             result_str = u'[\n'
             for item in values:
-                result_str += (indent_spaces + _to_text(*item, idents=new_idents))
+                result_str += (indent_spaces + _to_text(*item,
+                                                        idents=new_idents))
             result_str += (indent_spaces + u']')
         else:
             result_str = values
@@ -57,6 +60,7 @@ def format_text(results, fn):
     final = u'\n'.join([u'%s'] * len(results))
     final_str = final % texts
     _out_file(fn, final_str)
+
 
 def format_html(results, fn):
     def _rows_n_cols(dataobj):
@@ -78,7 +82,8 @@ def format_html(results, fn):
         parent.append(tag)
         return tag
 
-    bs = BeautifulSoup("<html><head>%s</head><body></body></html>" % _css, 'lxml')
+    bs = BeautifulSoup('<html><head>%s</head><body></body></html>' % _css,
+                       'lxml')
     table = _append_tag(bs, bs.body, 'table')
 
     def _l(dataobj, trs, curr_row):
@@ -108,10 +113,12 @@ def format_html(results, fn):
 
     _output_file(fn, bs.prettify())
 
+
 def _output_file(fn, s):
     import codecs
     f = codecs.open(fn, 'w', 'utf-8')
     f.write(s)
+
 
 def _gather_stocks(filter_results):
     s = []
@@ -130,4 +137,3 @@ if __name__ == '__main__':
     except Exception as e:
         common.report_error(traceback.format_exc(e))
         raise
-

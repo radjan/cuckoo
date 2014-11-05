@@ -3,6 +3,7 @@ import traceback
 import common
 import config
 
+
 class PresentData:
     """ manipulate data """
     def __init__(self, title, data=None):
@@ -34,16 +35,20 @@ class PresentData:
             return out
         return self.title, _output()
 
+
 def _get(d, k):
     return d.get(k, 'N/A')
 
+
 def _pass(yn, title=u'符合'):
     return (title, 'Y' if yn else 'N')
+
 
 def _format_float(v):
     if isinstance(v, float):
         return '{:,.4f}'.format(v)
     return v
+
 
 def format_basic(stock_data, data=None):
     """ format basic info """
@@ -62,16 +67,20 @@ def format_basic(stock_data, data=None):
         data.add(f, _format_float(_get(day, var)))
     return data
 
-def format_by_indicator(indicators, stock_data, share_data=None, data=None, verbose=False):
+
+def format_by_indicator(indicators, stock_data,
+                        share_data=None, data=None, verbose=False):
     """" format by indicator """
     data = data if data is not None else PresentData(u'股票')
     for name, yn in indicators.items():
         MAPPINGS[name](data, yn, stock_data, share_data, verbose=verbose)
     return data
 
+
 def _add_finance_field(section, finance, field_name):
     section.add(field_name, _format_float(_get(finance,
                                                common.field_var(field_name))))
+
 
 def kazuyo_katsuma(data, yn, stock_data, share_data, verbose=False):
     meta = stock_data[common.META]
@@ -104,6 +113,7 @@ def kazuyo_katsuma(data, yn, stock_data, share_data, verbose=False):
             for f in (u'稅前純利', u'資產總額'):
                 _add_finance_field(roa_sec, q_f, f)
 
+
 def old_brother(data, yn, stock_data, share_data, verbose=False):
     meta = stock_data[common.META]
     daily = stock_data[common.DAILY]
@@ -133,6 +143,7 @@ def old_brother(data, yn, stock_data, share_data, verbose=False):
         for f in (u'營業毛利率', u'負債比率', u'每股盈餘(元)'):
             _add_finance_field(y_sec, y_f, f)
 
+
 def _per(data, yn, stock_data, share_data, title, verbose=False):
     meta = stock_data[common.META]
     daily = stock_data[common.DAILY]
@@ -151,11 +162,14 @@ def _per(data, yn, stock_data, share_data, title, verbose=False):
         section.add(u'比例', _format_float(per / avg_per))
         section.add(u'分類', c_key)
 
+
 def per_low(data, yn, stock_data, share_data, verbose=False):
     _per(data, yn, stock_data, share_data, u'本益比低', verbose=verbose)
 
+
 def per_high(data, yn, stock_data, share_data, verbose=False):
     _per(data, yn, stock_data, share_data, u'本益比高', verbose=verbose)
+
 
 def _amount(data, yn, stock_data, share_data, title, verbose=False):
     meta = stock_data[common.META]
@@ -180,15 +194,21 @@ def _amount(data, yn, stock_data, share_data, title, verbose=False):
         for d in exam_days:
             section.add(d, _format_float(daily[d][var_amount]))
 
+
 def amount_low(data, yn, stock_data, share_data, verbose=False):
     _amount(data, yn, stock_data, share_data, u'成交量趨緩', verbose=verbose)
+
 
 def amount_high(data, yn, stock_data, share_data, verbose=False):
     _amount(data, yn, stock_data, share_data, u'成交量大增', verbose=verbose)
 
+
 def format(stock_data, indicators, categories):
     data = format_basic(stock_data)
-    format_by_indicator(indicators, stock_data, share_data={'categories': categories}, data=data)
+    format_by_indicator(indicators,
+                        stock_data,
+                        share_data={'categories': categories},
+                        data=data)
     return data
 
 MAPPINGS = {
@@ -206,6 +226,10 @@ if __name__ == '__main__':
     no = sys.argv[1]
     sd = common.load_stock(no)
     data = format_basic(sd)
-    format_by_indicator({config.KAZUYO_KATSUMA: True, config.OLD_BROTHER: True, config.AMOUNT_LOW: True}, sd, data=data)
+    format_by_indicator({config.KAZUYO_KATSUMA: True,
+                         config.OLD_BROTHER: True,
+                         config.AMOUNT_LOW: True},
+                        sd,
+                        data=data)
     import pprint
     pprint.pprint(data.output())
