@@ -23,7 +23,7 @@ def transfer(read_from, save_to):
     if read_from == save_to:
         print 'Saving data to where it is from does not make sense.'
         sys.exit(-2)
-    click.echo('This will OVERWRITE data in "%s". Are you sure? [y/n]'
+    click.echo('This will OVERWRITE data in "%s". Are you sure? [y/N]'
                % save_to)
     confirm = sys.stdin.readline()
     if confirm.strip() != 'y':
@@ -62,7 +62,7 @@ def transfer(read_from, save_to):
 
     todo = []
     for stocks in catalog.values():
-        todo.extends(stocks)
+        todo.extend(stocks)
     total = len(todo)
     print 'Transfering sotcks...'
     widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
