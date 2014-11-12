@@ -265,7 +265,7 @@ def save_categories(data):
 
 
 def load_state():
-    return _load_file(STATE, default={})
+    return _load_file(STATE, default={CURRENT_DATA_DATE: 'N/A'})
 
 
 def save_state(data):
