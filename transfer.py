@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 import click
 from progressbar import ProgressBar, FormatLabel
@@ -23,6 +25,7 @@ def transfer(read_from, save_to):
     if read_from == save_to:
         print 'Saving data to where it is from does not make sense.'
         sys.exit(-2)
+
     click.echo('This will OVERWRITE data in "%s". Are you sure? [y/N]'
                % save_to)
     confirm = sys.stdin.readline()
@@ -87,4 +90,16 @@ def save_errors(data):
 
 
 if __name__ == '__main__':
+    common.READ_FROM = common.FIREBASE  # load from firebase
+    state_firebase = common.load_state()
+    common.READ_FROM = common.LOCAL  # load from local
+    state_local = common.load_state()
+
+    display_msg = ' firebase: %s\n'\
+                  ' local:    %s' % (state_firebase[common.CURRENT_DATA_DATE],
+                                     state_local[common.CURRENT_DATA_DATE])
+
+    click.echo('Latest data:')
+    click.echo(click.style(display_msg, fg='red', bold=True))
+
     transfer()
