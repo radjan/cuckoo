@@ -50,8 +50,6 @@ def calculate_day(day, stock_data, average_data, stock_no=None):
             eps = f.get(common.field_var(u'每股盈餘(元)'), 0)
             if eps > 0:
                 per = price / eps
-                if stock_no == '3189':
-                    print '%s: %s = %s / %s' % (y, per, price, eps)
             else:
                 per = 0
             field_name = common.field_var(field)
