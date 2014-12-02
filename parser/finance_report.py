@@ -4,6 +4,7 @@ import sys
 import traceback
 import urllib2
 from bs4 import BeautifulSoup
+from progressbar import ProgressBar, FormatLabel
 
 import soup_helper
 import common
@@ -118,13 +119,15 @@ def main(no=-1):
                 todo.extend(s)
     total = len(todo)
     count = 0
-    print 'total', total
+    widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
+                           format(total))]
+    pbar = ProgressBar(widgets=widgets, maxval=total)
+    pbar.start()
     for stock_no in todo:
-        count += 1
-        if count % 10 == 0:
-            print '%s/%s' % (count, total)
         run_once(stock_no)
-    print 'done'
+        pbar.update(count)
+        count += 1
+    pbar.finish()
 
 
 if __name__ == '__main__':

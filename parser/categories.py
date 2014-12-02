@@ -4,6 +4,7 @@ import traceback
 
 import urllib2
 from bs4 import BeautifulSoup
+from progressbar import ProgressBar, FormatLabel
 
 from parser import soup_helper
 import common
@@ -159,10 +160,28 @@ def get_category_stock_info(url):
     return data_date, result
 
 
+
+def _total_stocks():
+    total = 0
+    catalog = common.load_catalog()
+    for _c, stocks in catalog.items():
+        for _stock in stocks:
+            total += 1
+    return total
+
+
 def main():
     catalog = {}
     curr_data_date = None
+
+    total = _total_stocks()
     state = common.load_state()
+    widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
+                           format(total))]
+    pbar = ProgressBar(widgets=widgets, maxval=total)
+    count = 0
+    pbar.start()
+
     for catalog_key, url in CATELOG.items():
         data_date, result = get_category_stock_info(url)
         if curr_data_date is None:
@@ -191,13 +210,17 @@ def main():
             stock_data.setdefault(common.META, {}).update(meta)
             common.save_stock(stock_no, stock_data)
             catalog.setdefault(category_key, []).append(stock_no)
+            pbar.update(count)
+            count += 1
 
         if not catalog.setdefault(SEPARATOR.join(catalog_key), []):
-            common.report_error('NO  STOCK FOUND!!!! %s, %s'
+            common.report_error('NO STOCK FOUND!!!! %s, %s'
                                 % (catalog_key, url))
     common.save_catalog(catalog)
     state[common.CURRENT_DATA_DATE] = curr_data_date
     common.save_state(state)
+    pbar.finish()
+
 
 if '__main__' == __name__:
     try:
