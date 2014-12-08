@@ -174,13 +174,15 @@ def main():
     catalog = {}
     curr_data_date = None
 
-    total = _total_stocks()
-    state = common.load_state()
+    # Add some more to prevent error when new stocks found
+    total = _total_stocks() + 10
+
     widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
                            format(total))]
     pbar = ProgressBar(widgets=widgets, maxval=total)
     count = 0
     pbar.start()
+    state = common.load_state()
 
     for catalog_key, url in CATELOG.items():
         data_date, result = get_category_stock_info(url)
