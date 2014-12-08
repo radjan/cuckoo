@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import common
 
 f = common.load_filter_results()
