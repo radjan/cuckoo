@@ -4,3 +4,4 @@ lxml>=3.4.0
 click>=3.3
 python-firebase>=1.2
 progressbar2>=2.6.7
+requests>=2.5
