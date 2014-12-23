@@ -1,0 +1,616 @@
+
+<!doctype html public "-//w3c//dtd html 4.01//en" "http://www.w3.org/tr/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5"> 
+<meta name="application-name" content="Yahoo!¿¿¿¿"/>
+<meta name="msapplication-TileColor" content="#7b0099"/> 
+<meta name="msapplication-TileImage" content="https://s.yimg.com/f/i/tw/stock/tw_stock_icon_pin.png"/>
+<title>Yahoo!¿¿¿¿</title>
+<link rel="stylesheet" type="text/css" href="https://s.yimg.com/f/i/tw/hp/masthead/yhtw_masthead_standard.css" media="screen, print" />
+<link rel="stylesheet" type="text/css" href="https://s.yimg.com/f/i/tw/hp/masthead/yhtw_masthead_12.css" media="screen, print" />
+<link rel="stylesheet" type="text/css" href="https://s.yimg.com/f/i/tw/stock/revampe/css_1960_min.css" media="screen, print" />
+<link rel="stylesheet" type="text/css" href="https://s.yimg.com/f/i/tw/stock/img06/stock_wd.css" media="screen, print" />
+<link rel="stylesheet" type="text/css" href="https://s.yimg.com/f/i/tw/stock/stock_print_1_2.css" media="print" />
+<link href="https://s.yimg.com/f/i/tw/hp/Universal_header/uh_bt3.css" type="text/css" rel="stylesheet"/>
+<link href="https://s.yimg.com/f/i/tw/stock/revampe/ystock_uh_1_1_min.css" type="text/css" rel="stylesheet"/> <script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+ var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+ var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+ var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+ if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_findObj(n, d) { //v4.01
+ var p,i,x; if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+ d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+ if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+ for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+ if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+ var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+ if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {
+ color: #000000;
+ font-family: "¿¿¿¿";
+}
+.style2 {color: #4f5d70}
+.style4 {color: #009900}
+.style5 {color: #FF0000}
+.style8 {font-size: 10pt;}
+.style9 {color: #000000; }
+.style12 {line-height: 25pt; font-family: "¿¿¿¿", mingliu, taipei;}
+.style13 {color: #4f5d70}
+-->
+</style>
+<script language="JavaScript" src="https://s.yimg.com/f/i/tw/hp/wd/wd_20050720.js"></script>
+<script language="JavaScript" src="https://s.yimg.com/zz/combo?yui:2.2.2/build/utilities/utilities.js"></script>
+<!--
+<script language="JavaScript" src="https://s.yimg.com/lq/lib/common/utils/2/yahoo_2.0.0-b2.js" ></script>
+<script language="JavaScript" src="https://s.yimg.com/lq/lib/common/utils/2/dom_2.0.0-b2.js" ></script>
+<script language="JavaScript" src="https://s.yimg.com/lq/lib/common/utils/2/event_2.0.0-b2.js" ></script>
+<script language="JavaScript" src="https://s.yimg.com/lq/lib/common/utils/2/dragdrop_2.0.0-b2.js" ></script>
+-->
+<script language="JavaScript" src="https://s.yimg.com/f/i/tw/stock/img06/stk_wd.js"></script>
+<script language="javascript" src="https://s.yimg.com/f/i/tw/stock/img06/stock22.js"></script>
+<script language="javascript" src="https://s.yimg.com/f/i/tw/stock/img06/auth.js"></script>
+<script language="javascript" src="https://s.yimg.com/f/i/tw/mc/mc.js"></script>
+<script language="javascript" src="https://s.yimg.com/f/i/tw/stock/img06/quotelist.js"></script>
+<script language="javascript" src="https://s.yimg.com/f/i/tw/stock/img06/tsc22_r1826.js"></script>
+<script type="text/javascript" src="https://s.yimg.com/lh/mbz/loader-min.js"></script>
+<script type='text/javascript'>
+ !window.YUI && document.write("<script type=\"text/javascript\" src=\"https://yui-s.yahooapis.com/combo?3.5.1/yui/yui-min.js\">"+"</scr"+"ipt>");
+</script></head> <body vlink=#3948CC style="margin-top:0px">
+<center>
+<!--BEGIN:Universal Master Header-->
+ <div id="ygma" class="fix750" style="margin: 0 auto;border:none;">
+ <link type='text/css' rel='stylesheet' href='https://s.yimg.com/zz/combo?kx/yucs/uh2/uh/295/css/yunivhead-min.css&kx/yucs/uh2/uh/295/css/logo-min.css&kx/ucs/avatar/css/17/avatar-min.css&kx/yucs/uh2/mail-link/85/css/mailcount_v2-min.css&kx/yucs/uh2/mail-link/85/css/mail_preview-min.css&kx/ucs/search/css/190/search_all-min.css&kx/ucs/search/css/190/search_buttons-min.css&kx/yucs/uh2/uh/295/css/yunivhead_https-min.css&kx/yucs/uh_common/meta/3/css/meta-min.css' /><div id="yUnivHead" class="yucs-zh-hant-tw" data-lang="zh-hant-tw" data-property="finance" data-flight="1419370164" data-uhvc="/;_ylt=ApvynrzW6YWwHfinl8wF62VmER4J"> <div id="yucs-disclaimer" class="yucs-disclaimer yucs-activate yucs-hide yucs-property-finance yucs-fcb- " data-dsstext="¿¿¿¿¿¿¿¿¿¿¿¿¿ {dssLink}¿¿¿¿¿¿¿ Yahoo¿¿{linkEnd}" data-dsstext-mobile="¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿" data-dsstext-mobile-ok="¿¿" data-dsstext-mobile-set-search="¿¿¿¿¿¿¿¿ Yahoo¿" data-ylt-link="https://tw.search.yahoo.com/searchset;_ylt=AnlcAVOL2FryEwwVHXIHxmNmER4J?pn=" data-ylt-dssbarclose="/;_ylt=Arytd2KtpUMSfqS4OoFAvb9mER4J" data-ylt-dssbaropen="/;_ylt=AmN4jnAVUQ0bLjPN5bLFT_dmER4J" data-linktarget="_top" data-lang="zh-hant-tw" data-property="finance" data-device="Desktop" data-close-txt="¿¿¿¿¿" data-maybelater-txt = "¿¿¿¿" data-killswitch = "0" data-host="tw.stock.yahoo.com" data-spaceid="" data-pn="3043BFT45Ob" data-pn-en-ca-mobile="D90hZEiz/Po" data-pn-de-de-mobile="VTZaisJWsrx" data-pn-es-es-mobile="QvB.IZd3S5c" data-pn-fr-fr-mobile="Sv8e3dEtqfx" data-pn-en-in-mobile="en5U0mgoBEz" data-pn-it-it-mobile="Xzdl5jcxkAe" data-pn-en-us-mobile="3043BFT45Ob" data-pn-en-sg-mobile="8eRW1ctXuMO" data-pn-en-gb-mobile="SImGJGXNVyT" data-pn-en-us-tablet="4ijbRBNUMqh" data-news-search-yahoo-com="OLlJ.OKDLNw" data-answers-search-yahoo-com="8XZU1i3SySn" data-finance-search-yahoo-com="wcdojCfvikp" data-images-search-yahoo-com="tY6fa5GjyjA" data-video-search-yahoo-com="zoFz8CIpVcf" data-sports-search-yahoo-com="fCCvcHiRoTl" data-shopping-search-yahoo-com="ysTXuexnFGX" data-shopping-yahoo-com="ysTXuexnFGX" data-us-qa-trunk-news-search-yahoo-com ="OLlJ.OKDLNw" data-dss=""></div>   <a href="#yuhead-search" class="yucs-skipto-search yucs-activate">¿¿¿¿¿¿</a>  <div id="yuhead-hd" class="yuhead-clearfix"> <div id="yuhead-mepanel-cont"> <ul id="yuhead-mepanel" class="yucs-toolbar yucs-activate" aria-label="¿¿¿¿"><li id="yuhead-username" class="yucs-menu yuhead-nodivide yuhead-nopad yucs-um-activate"> <a class="yuhead-firstname yltasis" aria-haspopup="true" rel="nofollow" href="javascript:void(0);"> <span class="yucs-avatar yucs-av-activate" data-user="¿¿" data-prof="Avatar" data-crumb="lpAdEc58w6q" data-guid="KBOK5DZDQVSOYRXNFCN2AKIUXI"></span>  <span class="yuhead-hi">¿¿¿&nbsp;</span><span class="yuhead-name">¿¿</span> <span class="yucs-menu-access sp yuhead-bullet-down"></span> </a> <ul id="yuhead-useroptions" class="yucs-menu-left hide"> <li class="first-child"> ¿¿¿¿¿¿¿¿¿: <span class="yuhead-yid">dark_rad</span> </li> <li> <a href="https://us.lrd.yahoo.com/_ylt=AsiurCeeIOjoM2_JD4ZblMBmER4J/SIG=17d1b5f3n/EXP=1420579764/**https%3A//edit.yahoo.com/mc2.0/eval_profile%3F.intl=tw%26.lang=zh-Hant-TW%26.done=https%3A//tw.stock.yahoo.com/s/list.php%253fc=%2525C2d%2525AA%2525F7%2525BF%2525C4%26amp;.src=quote%26amp;.intl=tw%26amp;.lang=zh-Hant-TW" target="_top" rel="nofollow"> ¿¿¿¿ </a> </li>  <li class="last-child yuhead-sl"> <a href="http://login.yahoo.com/config/login;_ylt=As8SRbVLDsHdoBGkcFtqeX1mER4J?logout=1&.direct=2&.done=http://tw.yahoo.com&amp;.src=quote&amp;.intl=tw&amp;.lang=zh-Hant-TW" target="_top" rel="nofollow"> ¿¿</a> </li> </ul></li> <noscript><li id="yuhead-me-signout" class="yuhead-me"><a href="http://login.yahoo.com/config/login;_ylt=Ahz71tNQXu_V6rL53TMvNrhmER4J?logout=1&.direct=2&.done=http://tw.yahoo.com&amp;.src=quote&amp;.intl=tw&amp;.lang=zh-Hant-TW" target="_top" rel="nofollow"> ¿¿</a></li></noscript> <li class="yuhead-me"><a href="http://us.lrd.yahoo.com/_ylt=ApV_5iHOyO91q_FRnSIzAVJmER4J/SIG=12053napr/EXP=1420579764/**http%3A//tw.help.cc.yahoo.com/%3Fproduct=stock" rel="nofollow" target="_top">¿¿¿¿</a></li></ul>   </div> <div id="yuhead-promo"><a style="font-weight:bold;"href="http://us.lrd.yahoo.com/_ylt=AtTsQexowSc2L44Z93Zi2a9mER4J/SIG=11mmmhf2u/EXP=1420579764/**http%3A//tw.overview.mail.yahoo.com/" target="_top" rel="nofollow">¿¿ Yahoo ¿¿¿¿¿¿Apps</a></div> <div id="yuhead-com-links-cont"> <ul id="yuhead-com-links" class="yucs-toolbar yucs-activate" aria-label="Yahoo ¿¿¿¿¿¿">  <li class="yuhead-com-link-item yucs-mailpreview-ancestor"> <a class="sp yltasis yuhead-ico-mail" href="https://us.lrd.yahoo.com/_ylt=AkWYGz0DlzG9QkiyUe7bGAlmER4J/SIG=12c6g67hc/EXP=1420579764/**https%3A//tw.mail.yahoo.com/%3F.intl=tw%26.lang=zh-Hant-TW" rel="nofollow" target="_top">¿¿<span class="yucs-activate yucs-mail-count hide" data-uri-scheme="https" data-uri-path="mg.mail.yahoo.com/mailservices/v1/newmailcount" data-authstate=middleauth data-crumb="lpAdEc58w6q" data-mc-crumb="vOusq8sfgSr"></span></a><ul class="yucs-mail-preview-panel hide" data-uri-scheme="http" data-uri-path="ucs.query.yahoo.com/v1/console/yql" data-mail-txt="¿¿" data-mail-view="¿¿¿¿ Yahoo ¿¿" data-mail-help-txt="¿¿¿¿" data-mail-help-url="http://help.cc.tw.yahoo.com/help_cp.html?product=29" data-mail-loading-txt="¿¿¿..." data-languagetag="zh-hant-tw" data-mrd-crumb="pB40zYtvsNx" data-authstate="middleauth" data-middleauth-signin-text="¿¿¿¿¿¿¿¿¿¿" data-popup-login-url="https://login.yahoo.com/config/login_verify2?.pd=c%3DOIVaOGq62e5hAP8Tv..nr5E3&.src=sc" data-middleauthtext="¿¿ {count} ¿¿¿¿" data-yltmessage-link="http://us.lrd.yahoo.com/_ylt=AhcmCeIBoFPYwgqe7UagxiFmER4J/SIG=132qeql1t/EXP=1420579764/**http%3A//mrd.mail.yahoo.com/msg%3Fmid=%7BmsgID%7D%26fid=Inbox%26src=uh%26.crumb=" data-yltviewall-link="https://us.lrd.yahoo.com/_ylt=Ajh78Niv9PnZti6iFwrWVE1mER4J/SIG=11ecejvhf/EXP=1420579764/**https%3A//tw.mail.yahoo.com/" data-yltpanelshown="/;_ylt=AoxuE7xw.j019YxzUqL3rqtmER4J"></ul></li><li class="yuhead-com-link-item"> <a href="http://tw.bid.yahoo.com/;_ylt=AuR5GfXENVU39wMndMQgywJmER4J" rel="nofollow" target="_top"> ¿¿ </a></li><li id="yuhead-com-home"><a class="sp yuhead-ico-home" href="https://us.lrd.yahoo.com/_ylt=AhndPJyHgSh.b4Odn2_1oyRmER4J/SIG=119e0g49j/EXP=1420579764/**https%3A//tw.yahoo.com/" rel="nofollow" target="_top">Yahoo ¿¿</a></li> </ul> </div> </div> <div id="yuhead-bd" class="yuhead-clearfix"> <div class="yuhead-logo"> <style> .yuhead-logo h2{ width:350px; height:58px; background-image:url(https://s.yimg.com/rz/d/yahoo_finance_zh-Hant-TW_s_f_pw_351x40_stock.png
+); _background-image:url(https://s.yimg.com/rz/d/yahoo_finance_zh-Hant-TW_s_f_pw_351x40_stock.gif
+); } .yuhead-logo a{ width:350px; height:58px; } .yuhead-logo div.yuhead-comarketing { width:350px; } .yog-tablet #yUnivHead h2 { background-position: -350px 5px !important; } html[lang='en-AU'] .yog-tablet #yUnivHead .yuhead-logo h2 { background-position: -350px 5px !important; } html[lang='en-NZ'] .yog-tablet #yUnivHead .yuhead-logo h2 { background-position: -350px 5px !important; } .yog-smartphone #yUnivHead h2 { background-position: -265px 0; background-size: 534px; margin-left: 26%; } .yog-tablet .yuhead-logo h2{ background-repeat: repeat-x; } .yog-tablet.yog-version-v2 #yUnivHead h2 { background-position: center !important; } .yog-tablet #yUnivHead .yuhead-logo h2 { height: 40px !important; } .yog-rtl.yog-smartphone #yUnivHead .yuhead-logo h2 { background-position: -352px 0; !important; background-size: 536px !important; margin-left: 30% !important; } html[lang='ar'] .yog-rtl.yog-smartphone #yUnivHead .yuhead-logo h2 { background-position: -386px 0; !important; } .yog-smartphone #yUnivHead h2.yuhead-music { background-position: 0 0 !important; width: 260px !important; } html[lang='en-US'] .yog-smartphone #yUnivHead h2 { background-size: auto 21px !important; background-position: -350px 0; } html[lang='pt-BR'] .yog-smartphone #yUnivHead h2.yuhead-sports { background-position: -265px 0 !important; background-size: 534px; margin-left: 17%; } html[lang='ar'] .yog-smartphone #yUnivHead h2.yuhead-omg { background-position: -383px 0 !important; background-size: 605px; margin-left: 0; width: auto; } html[lang='en-PH'] .yog-tablet #yUnivHead .yuhead-logo h2 { height: 47px !important; } html[lang='en-PH'] .yog-smartphone #yUnivHead h2 { width: 255px; } </style> <h2 class="yuhead-finance yuhead-standard"> <a href="https://us.lrd.yahoo.com/_ylt=Aq9fvk3zo7EAffDb.OxjmSRmER4J/SIG=11hdahq8g/EXP=1420579764/**https%3A//tw.finance.yahoo.com/" target="_top" tabindex="-1"> Yahoo ¿¿ </a> </h2> <div id="yucs-disclaimer-md" class="yucs-disclaimer-md yucs-activate yucs-hide Desktop  yucs-property-finance yucs-fcb-" data-dsstext="¿¿¿¿¿¿¿¿¿¿¿¿¿ {dssLink}¿¿¿¿¿¿¿ Yahoo¿¿{linkEnd}" data-dsstext-mobile="¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿" data-dsstext-mobile-ok="¿¿" data-dsstext-mobile-set-search="¿¿¿¿¿¿¿¿ Yahoo¿" data-ylt-link="https://tw.search.yahoo.com/searchset;_ylt=AnqoASuDHcL1rWH5zxPt5wpmER4J?pn=" data-ylt-dssbarclose="/;_ylt=ApxQP6xroc1cemQchNbqKAdmER4J" data-ylt-dssbaropen="/;_ylt=AlNU3n0FRaOBhEu3HZ7EHNpmER4J" data-linktarget="_top" data-lang="zh-hant-tw" data-property="finance" data-device="Desktop" data-close-txt="¿¿¿¿¿" data-maybelater-txt = "¿¿¿¿" data-killswitch = "0" data-dss=""></div><script typ="text/javascript" src="https://s.yimg.com/kx/yucs/uh3/disclaimer/274/js/disclaimer_seed-min.js"></script> </div> <div id="yuhead-search"> <div id="yuhead-sform-cont" class="yuhead-s-web yuhead-search-form"> <form role="search" class="yucs-search yucs-activate" target="_top" action="https://tw.search.yahoo.com/search;_ylt=Aok_Ip2EvFlbHM9hALLRQEBmER4J" method="get"><table role="presentation"> <tbody role="presentation"><tr role="presentation"><td class="yucs-form-input" role="presentation"> <label for="yuhead-sform-searchfield"> <span>¿¿</span> </label> <input autocomplete="off" type="text" class="sp yuhead-ico-mglass yuhead-search-hint yucs-search-field" name="p" data-sh="¿¿"  data-gosurl="" id="yuhead-sform-searchfield" data-pubid="" /></td><td NOWRAP class="yucs-form-btn" role="presentation"><div class="yucs-btn-wrap"> <button class="yucs-sweb-btn" type="submit">¿¿¿¿</button></div> </td> </tr> </tbody></table><input type="hidden" id="fr" name="fr" value="ush1-finance" /></form> </div> </div>  </div>               <!-- meta --><div id="yucs-meta" data-authstate="middleauth" data-cobrand="standard" data-crumb="lpAdEc58w6q" data-mc-crumb="vOusq8sfgSr" data-gta="55.SlB5j45R" data-device="desktop" data-experience="" data-firstname="¿¿" data-flight="1419370164" data-forcecobrand="standard" data-guid="KBOK5DZDQVSOYRXNFCN2AKIUXI" data-host="tw.stock.yahoo.com" data-https="1" data-languagetag="zh-hant-tw" data-property="finance" data-protocol="" data-shortfirstname="¿¿" data-shortuserid="dark_rad" data-status="active" data-spaceid="" data-test_id="" data-userid="dark_rad" data-stickyheader="true" data-headercollapse='' ></div><!-- /meta --></div><script type="text/javascript" charset="utf-8"> YUI().use('node','event','event-mouseenter','substitute','oop','node-focusmanager','node','event','substitute','cookie','event-resize','node', 'event', 'querystring-stringify','node','event','node','event','event-custom','event-valuechange','classnamemanager','node', function(Y) {});</script><script charset='utf-8' type='text/javascript' src='https://s.yimg.com/zz/combo?kx/ucs/common/js/140/setup-min.js&kx/ucs/sts/js/442/skip-min.js&kx/yucs/uh2/uh/295/js/timestamp_library-min.js&kx/ucs/menu_utils/js/164/menu_utils_v2-min.js&kx/yucs/uh2/uh/295/js/aria_toolbar-min.js&kx/ucs/username/js/43/user_menu-min.js&kx/ucs/help/js/41/help_menu-min.js&kx/ucs/utility_link/js/20/utility_menu-min.js&kx/yucs/uh2/uh/295/js/logo_debug-min.js&kx/yucs/uh3/disclaimer/331/js/disclaimer_seed-min.js&kx/ucs/common/js/131/jsonp-super-cached-min.js&kx/ucs/avatar/js/30/avatar-min.js&kx/yucs/uh2/mail-link/85/js/mailcount_ssl_v2-min.js&kx/ucs/search/js/226/search-min.js&kx/ucs/search/js/210/search_text_dir-min.js&kx/yucs/uh2/uh/295/js/activate_library-min.js&kx/yucs/uhc/meta/55/js/meta-min.js'></script> </div> 
+ <script type="text/javascript">
+ YUI().use('node',function(Y){
+ Y.one('#yuhead-sform-cont form').on('submit',function(e){
+ e.preventDefault();
+ var yui_stock_search_dom=Y.one('#yuhead-sform-searchfield'),
+ yui_stock_search_h = yui_stock_search_dom.get('value');
+ yui_stock_search_h = Y.Lang.trim(yui_stock_search_h);
+ if(yui_stock_search_h===document.getElementById('yuhead-sform-searchfield').getAttribute("data-sh")){
+ yui_stock_search_dom.set('value','');
+ }
+ var newUrl=this.get('action')+'?p='+encodeURIComponent(Y.one('#yuhead-sform-searchfield').get('value'))+'&fr='+Y.one('#fr').get('value');
+ window.top.location.href=newUrl;
+ })
+ })
+ </script>
+ <!--END:Universal Master Header--><!--TW N 20131204 -->
+<!-- Vendor: Yahoo! -->
+<div align="center">
+<script language=JavaScript>
+var yad_pos = "265035449 ", yad_url = new Array(), yad_w = "728", yad_h = "90", yad_wmode = "opaque", yad_time = "1419370164.482406 ", yad_ver = 8, yad_allowscript = "never";
+yad_url[0] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4OGE2cjhyNyhnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQwLGlkJGZsYXNoX2NsaWNrMSxyZCQxMzVrc3M5aXIseW9vJDEsYWdwJDI2NTAzNTQ0OSxhcCROKSk/1/*https://tw.mall.yahoo.com/activity?p=mall-1-0-141204-111501&_co=pZ141215bPushdown&_co2=Pz1215Pushdown";
+yad_url[2] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cnV2MGppNihnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQxLGlkJGZsYXNoX2NsaWNrMix5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*";
+yad_url[3] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cjAycmU0MyhnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQyLGlkJGZsYXNoX2NsaWNrMyx5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*";
+yad_url[4] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cmo4YTM5YihnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQzLGlkJGZsYXNoX2NsaWNrNCx5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*";
+yad_url[5] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cjYwdnNqMihnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQ0LGlkJGZsYXNoX2NsaWNrNSx5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*";
+yad_url[6] = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cmVuN2VscyhnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQ1LGlkJGZsYXNoX2NsaWNrNix5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*";
+var yad_swf = "https://s.yimg.com/gs/apex/mediastore/d0acb660-0bd4-4230-a75a-b7eefe29255e";
+var yad_aurl = "https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4MnZvNmZqMShnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQ2LGlkJGFsdGltZyxyZCQxMzVrc3M5aXIseW9vJDEsYWdwJDI2NTAzNTQ0OSxhcCROKSk/1/*https://tw.mall.yahoo.com/activity?p=mall-1-0-141204-111501&_co=pZ141215bPushdown&_co2=Pz1215Pushdown";
+var yad_aimg = "https://s.yimg.com/gs/apex/mediastore/24c7c2af-623e-49e0-a2e8-b45676c8cc42";
+(typeof(yad_flash_lib_loaded_090213) === 'undefined' || !yad_flash_lib_loaded_090213) ? document.write('<script src="https://s.yimg.com/f/a/tw/js/flash_general_20090213.js"><\/script>') : yad_showAd_090213();
+</script>
+<noscript>
+<a href="https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4NGZma3EzNyhnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3ODA4ODU2MSx2JDIuMCxhaWQkZER4Tklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxODg1MjU2MSxtbWUkNDAwNjI1OTg1Njc2MjE5ODA0OSxsbmckemgtdHcsciQ3LGlkJG5vc2NyaXB0LHJkJDEzNWtzczlpcix5b28kMSxhZ3AkMjY1MDM1NDQ5LGFwJE4pKQ/2/*https://tw.mall.yahoo.com/activity?p=mall-1-0-141204-111501&_co=pZ141215bPushdown&_co2=Pz1215Pushdown" target="_blank">
+<img src="https://s.yimg.com/gs/apex/mediastore/24c7c2af-623e-49e0-a2e8-b45676c8cc42" width="728" height="90" border="0">
+</a></noscript></div>
+<img src="https://s.yimg.com/f/a/tw/k_alan/space_p.gif" width=1 height=1 border=0 style="display:none;">
+<!-- END TW N  20131204--><script>var url = ""; if(url && url.search("http") != -1){new Image().src = url;}</script><!--QYZ 218852561,1278088561,202.43.201.88;;N;152965478;1;--><script language=javascript>
+if(window.xzq_d==null)window.xzq_d=new Object();
+window.xzq_d['dDxNIsorwyc-']='(as$12qplvcpk,aid$dDxNIsorwyc-,bi$218852561,cr$1278088561,ct$25,at$HR,eob$gd1_match_id=-1:ypos=N)';
+</script><noscript><img width=1 height=1 alt="" src="https://csc.beap.bc.yahoo.com/yi?bv=1.0.0&bs=(1344u6i75(gid$wc89RHeg9BzZ9j4FU_IDLABTJOd3zlSZ3rQABnh7,st$1419370164425524,si$244061,sp$152965478,pv$1,v$2.0))&t=JR_3-DR_3&al=(as$12qplvcpk,aid$dDxNIsorwyc-,bi$218852561,cr$1278088561,ct$25,at$HR,eob$gd1_match_id=-1:ypos=N)"></noscript><script lang="text/javascript">
+<!--
+var redirect = "https://tw.rd.yahoo.com/referurl/stock/other";
+function stkClearMe(control)
+{
+ control.value = '';
+ control.style.color = "black";
+}
+function stkRestore(control, str)
+{
+ if (control.value == '') {control.value = str; control.style.color = "#a8a8a8";};
+}
+function stockmenu_submit (form)
+{
+ if (form.stock_id.value == '¿¿¿¿¿¿/¿¿')
+ {
+ return false;
+ }
+ else
+ {
+ switch ( form.func.value ) {
+ case 'G': form.action = redirect + '/get_quote/quote/*' + form.action; break;
+ case 'L': form.action = redirect + '/get_quote/chart/*' + form.action; break;
+ case 'I': form.action = redirect + '/get_quote/prices/*' + form.action; break;
+ case 'N': form.action = redirect + '/get_quote/news/*' + form.action; break;
+ case 'H': form.action = redirect + '/get_quote/health/*' + form.action; break;
+ case 'F': form.action = redirect + '/get_quote/fundamental/*' + form.action; break;
+ case 'C': form.action = redirect + '/get_quote/credit/*' + form.action; break;
+ case 'T': form.action = redirect + '/get_quote/daily/*' + form.action; break;
+ case 'W': form.action = redirect + '/get_quote/weekly/*' + form.action; break;
+ case 'M': form.action = redirect + '/get_quote/monthly/*' + form.action; break;
+ }
+ form.submit();
+ }
+}
+//-->
+</script>
+<!--¿¿¿ start-->
+<div id="ystkglonav" class="yui-ystkglonav">
+<table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+ <tr>
+ <td height="36" valign="bottom" background="https://s.yimg.com/f/i/tw/stock/revamp/t_bg01.jpg"><table width="730" border="0" align="center" cellpadding="0" cellspacing="0">
+ <tr>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/home/*https://tw.stock.yahoo.com/' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image50','','https://s.yimg.com/f/i/tw/stock/yimg/t1_idx_v_new.png',1)" hpp='home'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t1_idx_new.png" name="Image50" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="89" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/portfolio/*https://tw.stock.yahoo.com/pf/mypf' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image51','','https://s.yimg.com/f/i/tw/stock/yimg/t2_ivst_v.png',1)" hpp='portfolio'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t2_ivst.png" name="Image51" width="85" height="24" border="0" title="¿¿¿¿" alt="¿¿¿¿"/></a></td>
+<td width="89" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/industry/*https://tw.stock.yahoo.com/h/getclass.php' hpp='industry'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t3_tdy_o.png" name="Image52" width="85" height="31" border="0" title="¿¿¿¿" alt="¿¿¿¿"></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/tse/*https://tw.stock.yahoo.com/s/tse.php' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image53','','https://s.yimg.com/f/i/tw/stock/yimg/t4_big_v.png',1)" hpp='tse'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t4_big.png" name="Image53" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/indice/*https://tw.stock.yahoo.com/s/nine.php' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image54','','https://s.yimg.com/f/i/tw/stock/yimg/t5_cls_v.png',1)" hpp='indice'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t5_cls.png" name="Image54" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/futures/*https://tw.stock.yahoo.com/future/' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image55','','https://s.yimg.com/f/i/tw/stock/yimg/t6_ftr_v_future.png',1)" hpp='futures'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t6_ftr_future.png" name="Image55" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="89" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/hkcn/*https://tw.stock.yahoo.com/hkcn/' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image56','','https://s.yimg.com/f/i/tw/stock/yimg/t7_hk_v.png',1)" hpp='hkcn'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t7_hk.png" name="Image56" width="85" height="24" border="0" title="¿¿¿¿" alt="¿¿¿¿"/></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/us/*https://tw.stock.yahoo.com/us/' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image57','','https://s.yimg.com/f/i/tw/stock/yimg/t8_us_v.png',1)" hpp='us'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t8_us.png" name="Image57" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/news/*https://tw.stock.yahoo.com/news_index.html' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image58','','https://s.yimg.com/f/i/tw/stock/yimg/t9_nws_v.png',1)" hpp='news'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t9_nws.png" name="Image58" width="53" height="24" border="0" title="¿¿" alt="¿¿"/></a></td>
+<td width="77" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/SIG=125gf33ql/**https://tw.screener.finance.yahoo.net/screener/basic.html' onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image59','','https://s.yimg.com/f/i/tw/stock/yimg/t10a_fd_v_new.png',1)" hpp='screener'><img src="https://s.yimg.com/f/i/tw/stock/yimg/t10a_fd_new.png" name="Image59" width="73" height="24" border="0" title="Y¿¿" alt="Y¿¿"/></a></td>
+<td width="57" valign="bottom"><a href='https://tw.rd.yahoo.com/referurl/stock/other/nav/house/**https://tw.campaign.yahoo.com/stock/house/2014/' onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image60','','https://s.yimg.com/f/i/tw/stock/yimg/t11_hou_v.png',1)" hpp="house"><img src="https://s.yimg.com/f/i/tw/stock/yimg/t11_hou.png" name="Image60" width="53" height="24" border="0" title="¿¿" alt="¿¿"></a></td>
+ </tr>
+ </table></td>
+ </tr>
+ <tr>
+ <td height="8" background="https://s.yimg.com/f/i/tw/stock/revamp/bg02.gif"></td>
+ </tr>
+ <tr>
+ <td height="36" bgcolor="#4f627b"><table width="740" border="0" align="center" cellpadding="0" cellspacing="2">
+ <tr><form name="menu" action="https://tw.stock.yahoo.com/h/stockmenu.php" onsubmit="return stockmenu_submit(this);">
+ <td valign="top"><a href="javascript:open_win('/h/kimosel.php','menu','stock_id','stock_name')" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('button01','','https://s.yimg.com/f/i/tw/stock/revamp/button01_f2.gif',1);" class="yui-tw-stock-block yui-nav-but"><img name="button01" src="https://s.yimg.com/f/i/tw/stock/revamp/button01.gif" width="95" height="21" border="0" alt=""></a></td>
+ <td>
+ <input type="hidden" name="stock_name" value>
+ <input type="hidden" name="ei" value="cp950">
+ <input value="¿¿¿¿¿¿/¿¿" onfocus="javascript:stkClearMe(this);" onblur="javascript:stkRestore(this,'¿¿¿¿¿¿/¿¿');" id="stock_id" name="stock_id" type="text" size="15" />
+<script language="javascript">
+if(document.getElementById("stock_id").value == "¿¿¿¿¿¿/¿¿")
+{
+ document.getElementById("stock_id").style.color = "#a8a8a8";
+}
+ </script>
+ </td>
+ <td><label>
+ <select name="func" onChange="return stockmenu_submit(this.form);">
+ <option VALUE="G" SELECTED>¿¿¿¿¿¿¿¿¿¿</option>
+ <option VALUE="L">¿¿¿¿¿¿¿¿¿¿</option>
+ <option VALUE="I">¿¿¿¿¿¿¿¿¿¿</option>
+ <option VALUE="N">¿¿¿¿¿¿¿¿</option>
+ <option VALUE="H">¿¿¿¿¿¿¿¿</option>
+ <option VALUE="F">¿¿¿¿¿¿¿¿¿¿</option>
+ <option VALUE="C">¿¿¿¿¿¿¿¿¿¿</option>
+ <option VALUE="T">¿¿¿¿¿¿¿¿¿¿</option>
+ </select>
+ </label></td>
+ <td><label><input style="width:38px;height:23px;padding-bottom:3px;*padding-top:3px;padding-left:3px;text-align:left;" type="submit" name="xSubmit" value="¿¿"/>
+ </label></td>
+<!-- type - 1, ref: Array
+(
+    [hh] => 9
+    [mm] => 0
+)
+ -->
+ <td width="270" class="ssbody"><div align="right"><span class="ssbodyw">2014/12/24 05:29 ¿¿¿¿¿¿¿¿3¿¿31¿¿</span></div></td>
+ <td>
+ <a class="refresh" href='https://tw.rd.yahoo.com/referurl/stock/get_quote/refresh/*https://tw.stock.yahoo.com/s/list.php?c=%C2d%AA%F7%BF%C4' >¿¿</a>
+ </td>
+ </div></td> </form></tr>
+ </table>
+ <label></label></td>
+ </tr>
+ <tr>
+ <td height="4" bgcolor="#FFFFFF"></td>
+ </tr>
+</table>
+</div>
+<script language="javascript">
+if(document.getElementById("stock_id").value == "¿¿¿¿¿")
+{
+ document.getElementById("stock_id").style.color = "#a8a8a8";
+}
+</script> 
+<!--¿¿¿ end--> <table border="0" cellpadding="0" cellspacing="0" width="750">
+<tr height=20><td>&nbsp;</td></tr>
+</table>
+<!--
+<div class="mobilizer"><a onclick="return YMobilizer.load({app: 'finance', lang: 'zh-Hant-TW'})" href="#" class="mob-com yui-mobile-pad">¿¿¿¿¿</a></div>
+-->
+<table border="0" cellpadding="0" cellspacing="0" width="750" class="yui-text-left">
+    <script language="javascript">
+    <!--
+    document.title = "¿¿¿ - " + document.title;
+    //-->
+     </script>
+    <script language="javascript">
+    <!--
+    ykuser_control(0);
+    //-->
+    </script>
+    <form name=stkadd action=/pf/pfsel method=get target=_top>
+    <input type=hidden name=stocklist value="">
+    <input type=hidden name=selected value="0">
+    </form>
+    <form name=orderform target=_top>
+    <input type=hidden name=df value="">
+    <input type=hidden name=stkid value="">
+    <input type=hidden name=stkname value="">
+    <input type=hidden name=bs value="">
+    <input type=hidden name=vol value="">
+    </form>
+    <form name=list>
+    <input type=hidden name=stknum value=9>
+    <tr><td><table border=0 cellpadding=0 cellspacing=0 width=100% bgcolor=#fff0c1>
+    <tr>
+    <td width=50%  height=30><input type=button name=submit value="¿¿¿¿¿¿"
+    onClick="SubmitFunction();"> ¿<font class=c3><a
+    href="javascript:selDelAll();">¿¿¿¿¿¿</a></font>¿</td>
+    <td width=50% align=right class="yui-text-right"><FONT COLOR=#3333FF size=-1>¿¿¿¿¿  103/12/23</FONT></td></tr></table></td></tr>
+    <tr><td><table border="0" height="30" cellpadding="0" cellspacing="0" width="100%">
+        <tr bgcolor="#ffffff"><td>
+            <table width="100%" border="1" cellspacing="0" cellpadding="2" bgcolor="#ffffff">
+                <tr height="30" bgcolor="#FFFFFF">
+                    <th>¿¿</th>
+                    <th nowrap>¿¿¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap width=50>¿¿</th>
+                    <th nowrap width=50>¿¿</th>
+                    <th nowrap width=50>¿¿</th>
+                    <th nowrap width=75>¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap>¿¿</th>
+                    <th nowrap bgcolor=#FDEDEF><font color=#990066>¿¿¿¿¿¿</font></th>
+                </tr>               <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=5820></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_5820.html>5820 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>8.27</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.26</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.27</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#ff0000>¿0.02</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>2,327</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.25</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.27</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.27</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.23</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,0,'5820','','I');">
+            <a href="javascript:Tsc_order(document.list,0,'5820','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=5878></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_5878.html>5878 ¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>44.80</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>44.70</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>44.90</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#009900>¿0.40</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>11</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>45.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>45.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>45.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>44.80</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,1,'5878','','I');">
+            <a href="javascript:Tsc_order(document.list,1,'5878','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6015></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6015.html>6015 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>8.83</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.83</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.86</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#000000>0.00</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>737</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.83</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.93</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.93</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.80</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,2,'6015','','I');">
+            <a href="javascript:Tsc_order(document.list,2,'6015','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6016></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6016.html>6016 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>8.12</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.12</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.13</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#009900>¿0.02</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>630</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.14</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.16</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.18</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>8.04</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,3,'6016','','I');">
+            <a href="javascript:Tsc_order(document.list,3,'6016','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6020></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6020.html>6020 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>17.90</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>17.90</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>18.00</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#009900>¿0.05</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>32</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>17.95</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>18.00</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>18.00</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>17.85</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,4,'6020','','I');">
+            <a href="javascript:Tsc_order(document.list,4,'6020','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6021></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6021.html>6021 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>14.50</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.50</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.55</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#009900>¿0.10</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>95</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.60</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.80</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.80</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>14.50</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,5,'6021','','I');">
+            <a href="javascript:Tsc_order(document.list,5,'6021','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6022></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6022.html>6022 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:30</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>10.55</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.50</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.55</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#ff0000>¿0.05</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>427</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.50</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.60</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.65</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>10.50</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,6,'6022','','I');">
+            <a href="javascript:Tsc_order(document.list,6,'6022','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6023></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6023.html>6023 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:24</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>34.65</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.65</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.75</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#000000>0.00</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>33</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.65</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.70</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.75</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>34.65</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,7,'6023','','I');">
+            <a href="javascript:Tsc_order(document.list,7,'6023','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+                <tr height=30>
+                    <td align=center width=3%><input type=checkbox name=stock
+                    onClick="Calc(this)"><input type=hidden name=stkid
+                    value=6024></td>
+
+                    <td align=center bgcolor=#FFFfff nowrap><a href=/q/q_6024.html>6024 ¿¿¿</a><br>
+                    </td>   
+        <td align="center" bgcolor="#FFFfff" nowrap>13:14</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><b>24.20</b></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.15</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap><font color=#000000>0.00</font></td>
+        <td align="center" bgcolor="#FFFfff" nowrap>53</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.20</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.25</td>
+        <td align="center" bgcolor="#FFFfff" nowrap>24.20</td>
+
+        <td align=center nowrap bgcolor=#FDEDEF class=stext>
+            <input type=radio name=bstype value=1><font color=#FF0000>¿</font> <input type=radio name=bstype value=5> <font color=#009900>¿</font> 
+            <input type=text name=vol size=5><font color=#990066>¿</font><input type=button
+            value='¿¿' onClick="Tsc_order(document.list,8,'6024','','I');">
+            <a href="javascript:Tsc_order(document.list,8,'6024','','Z');">¿¿¿¿</a>
+        </td>
+    </tr>
+    </table>
+      </td>
+   </tr>
+  </table>
+    <tr><td><table border=0 cellpadding=0 cellspacing=0 width=100% bgcolor=#fff0c1>
+    <tr>
+    <td width=50%  height=30><input type=button name=submit value="¿¿¿¿¿¿"
+    onClick="SubmitFunction();"> ¿<font class=c3><a
+    href="javascript:selDelAll();">¿¿¿¿¿¿</a></font>¿</td>
+    <td width=50% align=right class="yui-text-right"><FONT COLOR=#3333FF size=-1>¿¿¿¿¿  103/12/23</FONT></td></tr></table></td></tr>
+</form>
+</table>
+<style>
+/*
+.yui-stock-flash-page *{margin:0;padding:0;}
+.yui-stock-flash-page{width: 750px;margin: 0 auto;padding-top: 10px}
+.yui-stock-flash-page li a{width: 26px;height: 26px;line-height: 26px;border: 1px solid #3399ff;text-align: center;color: #0000ff;font-weight: bold;font-size: 19px;display:block;text-decoration : none;}
+.yui-stock-flash-page li{list-style: none;float: left;padding: 7px 0 0 10px;}
+.yui-stock-flash-page li a:hover,.yui-stock-flash-page li.cur a{background-color: #3399ff;border:1px solid #0000ff;color:#fff;}
+.yui-stock-flash-page li.ctrlpage{width:80px;}
+*/
+.up-or-next {margin-left:4px; margin-right:4px;}
+.up-or-next a{width:90px;}
+.page-list a {width:26px;}
+.up-or-next a,.page-list a {height:26px; line-height:26px; border:1px solid #3399ff; display:inline-block; margin:2px; padding:0;color:#0000ff; font-size:18px; text-decoration:none;padding-top/*\**/:2px\9;}
+.up-or-next a:hover,.page-list a:hover,.page-list a.cur{background-color: #3399ff;border:1px solid #0000ff;color:#fff;text-decoration : none;padding-top/*\**/:2px\9;}
+</style>
+<p>
+<div class="addendum"></span>
+ <div class="news">
+ <div class="hd">
+ <label class="finance">¿¿¿¿¿¿</label>
+ <span class="more"><a href="https://tw.stock.yahoo.com/news_list/url/d/e/N997.html">&raquo; ¿¿</a></span>
+ </div>
+ <div class="bd"> 
+ <ul>
+ </ul>
+ </div>
+ <div class="ft">
+ </div>
+ </div>
+ <div class="ad">
+ <div class="hd">¿¿</div>
+ <div class="bd">
+<a href="https://clicks.beap.bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE3cm5rYThtNShnaWQkd2M4OVJIZWc5QnpaOWo0RlVfSURMQUJUSk9kM3psU1ozclFBQm5oNyxzdCQxNDE5MzcwMTY0NDI1NTI0LHNpJDI0NDA2MSxzcCQxNTI5NjU0NzgsY3IkMTI3MjAxNTA2MSx2JDIuMCxhaWQkOVVwTklzb3J3eWMtLGN0JDI1LHlieCRwcDJNREt1T2NLLnVZamtqemxZcVBnLGJpJDIxNTk2NTA2MSxtbWUkMzk5NDIxODkxNTk0NzgyOTg4MCxsbmckemgtdHcsciQwLHJkJDExZjAxa25zZyx5b28kMSxhZ3AkMjYxNjg3OTQ5LGFwJExSRUMpKQ/2/*https://www.taishinbank.com.tw/event/201411/MGM" target="_blank"><img src="https://s.yimg.com/gs/apex/mediastore/de670a2f-2f73-4a7a-98e0-6c87b7387425" alt="" title="" width=300 height=250 border=0/></a><script>var url = ""; if(url && url.search("http") != -1){new Image().src = url;}</script><!--QYZ 215965061,1272015061,202.43.201.88;;LREC;152965478;1;--><script language=javascript>
+if(window.xzq_d==null)window.xzq_d=new Object();
+window.xzq_d['9UpNIsorwyc-']='(as$12q6rikfh,aid$9UpNIsorwyc-,bi$215965061,cr$1272015061,ct$25,at$HR,eob$gd1_match_id=-1:ypos=LREC)';
+</script><noscript><img width=1 height=1 alt="" src="https://csc.beap.bc.yahoo.com/yi?bv=1.0.0&bs=(1344u6i75(gid$wc89RHeg9BzZ9j4FU_IDLABTJOd3zlSZ3rQABnh7,st$1419370164425524,si$244061,sp$152965478,pv$1,v$2.0))&t=JR_3-DR_3&al=(as$12q6rikfh,aid$9UpNIsorwyc-,bi$215965061,cr$1272015061,ct$25,at$HR,eob$gd1_match_id=-1:ypos=LREC)"></noscript> </div>
+ </div>
+</div> <table width="750" border="0" align="center" cellpadding="0" cellspacing="0">
+ <tr>
+ <td height="90" valign="bottom">
+ <DIV id=yhtw_mastfoot>
+ <DIV class=ln>
+ <A href="https://tw.rd.yahoo.com/referurl/central/f/tos/*https://tw.yahoo.com/info/utos.html">¿¿¿¿</A> 
+ <A href="https://tw.rd.yahoo.com/referurl/central/f/pri/*https://info.yahoo.com/privacy/tw/yahoo/">¿¿¿</A>
+ </DIV>
+<DIV class=other>¿¿¿¿<A 
+href="http://www.twse.com.tw/">¿¿¿¿¿¿¿(TWSE)</A>¿<A 
+href="http://newmops.twse.com.tw/">¿¿¿¿¿¿¿</A>¿<A 
+href="http://www.otc.org.tw/">¿¿¿¿¿¿(OTC)</A>¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿Yahoo!¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿(¿¿ 
+Yahoo!¿¿¿<A 
+href="https://tw.yahoo.com/info/disclaimers.html">¿¿¿¿</A>)</DIV>
+</DIV></td>
+ </tr>
+</table> 
+<!-- SpaceID=152965478 loc=FOOT9 noad --><!-- fac-gd2-noad --><!-- gd2-status-2 --><!--QYZ CMS_NONE_AVAIL,,202.43.201.88;;FOOT9;152965478;2;--></center>
+<!-- (begin) Yahoo! Web Analytics -->
+<script type="text/javascript" src="https://s.yimg.com/mi/vs3/ywa.js"></script>
+<div id="ywa-data" style="display:none;" docgroup="stock_dailylist" docname=""></div>
+<script type="text/javascript" src="https://s.yimg.com/f/i/tw/stock/ywa_tracker.js"></script>
+<noscript>
+<div><img src="https://y.analytics.yahoo.com/p.pl?a=1000614751179&amp;js=no" width="1" height="1" alt="" /></div>
+</noscript>
+<!-- (end) Yahoo! Web Analytics --> </body><script src="https://s.yimg.com/f/i/tw/mb/universal_header/uh_tw_v11.js" type="text/javascript"></script> 
+<!-- Begin comScore Tag --> 
+<script>
+ var _comscore = _comscore || [];
+ _comscore.push({
+ c1: "2",
+ c2: "7241469",
+ c5: "152965478",
+ c7: "http%3A%2F%2Ftw.stock.yahoo.com%252fs%252flist.php%253fc%253d%25C2d%25AA%25F7%25BF%25C4"
+ });
+ (function() {
+ var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+ s.src = "https://s.yimg.com/lq" + "/lib/3pm/cs_0.2.js";
+ el.parentNode.insertBefore(s, el);
+ })();
+ YUI().use('node',function(Y){
+ if(Y.one('#yuhead-sform-searchfield')){
+ Y.one('#yuhead-sform-searchfield').set('value',document.getElementById('yuhead-sform-searchfield').getAttribute("data-sh"));
+ }
+ })
+</script>
+<noscript><img src="https://sb.scorecardresearch.com/p?c1=2&c2=7241469&c7=http%3A%2F%2Ftw.stock.yahoo.com%252fs%252flist.php%253fc%253d%25C2d%25AA%25F7%25BF%25C4&c5=152965478&cv=2.0&cj=1" width="1" height="1" alt=""/></noscript>
+<!-- End comScore Tag -->
+</html>
+<script language=javascript>
+(function(){window.xzq_p=function(R){M=R};window.xzq_svr=function(R){J=R};function F(S){var T=document;if(T.xzq_i==null){T.xzq_i=new Array();T.xzq_i.c=0}var R=T.xzq_i;R[++R.c]=new Image();R[R.c].src=S}window.xzq_sr=function(){var S=window;var Y=S.xzq_d;if(Y==null){return }if(J==null){return }var T=J+M;if(T.length>P){C();return }var X="";var U=0;var W=Math.random();var V=(Y.hasOwnProperty!=null);var R;for(R in Y){if(typeof Y[R]=="string"){if(V&&!Y.hasOwnProperty(R)){continue}if(T.length+X.length+Y[R].length<=P){X+=Y[R]}else{if(T.length+Y[R].length>P){}else{U++;N(T,X,U,W);X=Y[R]}}}}if(U){U++}N(T,X,U,W);C()};function N(R,U,S,T){if(U.length>0){R+="&al="}F(R+U+"&s="+S+"&r="+T)}function C(){window.xzq_d=null;M=null;J=null}function K(R){xzq_sr()}function B(R){xzq_sr()}function L(U,V,W){if(W){var R=W.toString();var T=U;var Y=R.match(new RegExp("\\\\(([^\\\\)]*)\\\\)"));Y=(Y[1].length>0?Y[1]:"e");T=T.replace(new RegExp("\\\\([^\\\\)]*\\\\)","g"),"("+Y+")");if(R.indexOf(T)<0){var X=R.indexOf("{");if(X>0){R=R.substring(X,R.length)}else{return W}R=R.replace(new RegExp("([^a-zA-Z0-9$_])this([^a-zA-Z0-9$_])","g"),"$1xzq_this$2");var Z=T+";var rv = f( "+Y+",this);";var S="{var a0 = '"+Y+"';var ofb = '"+escape(R)+"' ;var f = new Function( a0, 'xzq_this', unescape(ofb));"+Z+"return rv;}";return new Function(Y,S)}else{return W}}return V}window.xzq_eh=function(){if(E||I){this.onload=L("xzq_onload(e)",K,this.onload,0);if(E&&typeof (this.onbeforeunload)!=O){this.onbeforeunload=L("xzq_dobeforeunload(e)",B,this.onbeforeunload,0)}}};window.xzq_s=function(){setTimeout("xzq_sr()",1)};var J=null;var M=null;var Q=navigator.appName;var H=navigator.appVersion;var G=navigator.userAgent;var A=parseInt(H);var D=Q.indexOf("Microsoft");var E=D!=-1&&A>=4;var I=(Q.indexOf("Netscape")!=-1||Q.indexOf("Opera")!=-1)&&A>=4;var O="undefined";var P=2000})();
+</script><script language=javascript>
+if(window.xzq_svr)xzq_svr('https://csc.beap.bc.yahoo.com/');
+if(window.xzq_p)xzq_p('yi?bv=1.0.0&bs=(1344u6i75(gid$wc89RHeg9BzZ9j4FU_IDLABTJOd3zlSZ3rQABnh7,st$1419370164425524,si$244061,sp$152965478,pv$1,v$2.0))&t=JR_3-DR_3');
+if(window.xzq_s)xzq_s();
+</script><noscript><img width=1 height=1 alt="" src="https://csc.beap.bc.yahoo.com/yi?bv=1.0.0&bs=(1344u6i75(gid$wc89RHeg9BzZ9j4FU_IDLABTJOd3zlSZ3rQABnh7,st$1419370164425524,si$244061,sp$152965478,pv$1,v$2.0))&t=JR_3-DR_3"></noscript><script>(function(c){var d="https://",a=c&&c.JSON,e="ypcdb",g=document,b;function j(n,q,p,o){var m,r;try{m=new Date();m.setTime(m.getTime()+o*1000);g.cookie=[n,"=",encodeURIComponent(q),"; domain=",p,"; path=/; max-age=",o,"; expires=",m.toUTCString()].join("")}catch(r){}}function k(m){return function(){i(m)}}function i(n){var m,o;try{m=new Image();m.onerror=m.onload=function(){m.onerror=m.onload=null;m=null};m.src=n}catch(o){}}function f(o){var p="",n,s,r,q;if(o){try{n=o.match(/^https?:\/\/([^\/\?]*)(yahoo\.com|yimg\.com|flickr\.com|yahoo\.net|rivals\.com)(:\d+)?([\/\?]|$)/);if(n&&n[2]){p=n[2]}n=(n&&n[1])||null;s=n?n.length-1:-1;r=n&&s>=0?n[s]:null;if(r&&r!="."&&r!="/"){p=""}}catch(q){p=""}}return p}function l(B,n,q,m,p){var u,s,t,A,r,F,z,E,C,y,o,D,x,v=1000,w=v;try{b=location}catch(z){b=null}try{if(a){C=a.parse(p)}else{y=new Function("return "+p);C=y()}}catch(z){C=null}if(y){y=null}try{s=b.hostname;t=b.protocol;if(t){t+="//"}}catch(z){s=t=""}if(!s){try{A=g.URL||b.href||"";r=A.match(/^((http[s]?)\:[\/]+)?([^:\/\s]+|[\:\dabcdef\.]+)/i);if(r&&r[1]&&r[3]){t=r[1]||"";s=r[3]||""}}catch(z){t=s=""}}if(!s||!C||!t||!q){return}A=g.URL||b.href||"";E=f(A);if(!E||g.cookie.indexOf("ypcdb="+n)>-1){return}if(t===d){q=m}u=0;while(F=q[u++]){o=F.lastIndexOf("=");if(o!=-1){D=F.substr(1+o);x=C[D];if(x){setTimeout(k(t+F+x),w);w+=v}}}u=0;while(F=B[u++]){setTimeout(k(t+F),w);w+=v}setTimeout(function(){j(e,n,E,86400)},w)}function h(){l([],'e2b1d443452732b425948442ab467b72',['csync.flickr.com/csync?ver=2.1','csync.yahooapis.com/csync?ver=2.1','u2sb.interclick.com/beacon.gif?ver=2.1'],['cdnk.interclick.com/beacon.gif?ver=2.1','csync.flickr.com/csync?ver=2.1','csync.yahooapis.com/csync?ver=2.1'],'{"2.1":"&id=23351&value=qwguh0y9i40cp%26o%3d4%26q%3dmmC2STgcLRC28oL63i84_5fwtJKwajy0eb8-%26f%3dt9%26v%3d1YcFJacwgjAgPHbkmeeM&optout=h%3d1&timeout=1419370164&sig=13rp5quf4"}')}if(c.addEventListener){c.addEventListener("load",h,false)}else{if(c.attachEvent){c.attachEvent("onload",h)}else{c.onload=h}}})(window);
+</script>
+<!-- w135.finance.tw1.yahoo.com compressed/chunked Wed Dec 24 05:29:24 CST 2014 -->
+
