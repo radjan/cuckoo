@@ -46,11 +46,6 @@ def transfer(read_from, save_to):
     categories = common.load_categories()
     common.save_categories(categories)
 
-    print 'Transfering state...'
-    catalog = common.load_catalog()
-    state = common.load_state()
-    common.save_state(state)
-
     print 'Transfering filter results...'
     f_results = common.load_filter_results()
     common.save_filter_results(f_results)
@@ -79,6 +74,11 @@ def transfer(read_from, save_to):
         pbar.update(count)
         count += 1
     pbar.finish()
+
+    print 'Transfering state...'
+    catalog = common.load_catalog()
+    state = common.load_state()
+    common.save_state(state)
 
 
 def load_errors():
