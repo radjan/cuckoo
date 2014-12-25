@@ -16,13 +16,26 @@ def _prepare_per(stock_data, share_data):
 
 
 def per_low(stock_data, share_data):
-    per, avg_per = _prepare_per(stock_data, share_data)
-    return per < avg_per
+    try:
+        per, avg_per = _prepare_per(stock_data, share_data)
+    except KeyError as err:
+        meta = stock_data['meta']
+        common.report_error(u'ERROR: {} {} KeyError: {}'.format(
+            meta['stock_no'], meta['name'], err))
+        return False
+    else:
+        return per < avg_per
 
 
 def per_high(stock_data, share_data):
-    per, avg_per = _prepare_per(stock_data, share_data)
-    return per > avg_per * 2.0
+    try:
+        per, avg_per = _prepare_per(stock_data, share_data)
+    except KeyError as err:
+        meta = stock_data['meta']
+        common.report_error(u'ERROR: {} {} KeyError: {}'.format(
+            meta['stock_no'], meta['name'], err))
+    else:
+        return per > avg_per * 2.0
 
 
 def _prepare_amount(stock_data, share_data):
