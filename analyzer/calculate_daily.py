@@ -70,7 +70,7 @@ def calculate_day(day, stock_data, average_data, stock_no=None):
 
     # 殖利率 = 股價 / 最近一年股利
     f = finance.get(last_year, None)
-    if f:
+    if f and price:
         dividend = f.get(common.field_var(u'股利'), 0)
         if dividend:
             yield_rate = dividend / price
