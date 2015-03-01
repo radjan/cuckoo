@@ -9,36 +9,62 @@ from progressbar import ProgressBar, FormatLabel
 import soup_helper
 import common
 
+ERROR = common.report_error
 COL_PERIOD = u'期別'
 
-MAPPING = {
-    # url: (wanted_column_names)
+URL_COLS = (  # (url, (wanted_column_names)) ordered, later values overwrite
     # QUARTER_MAPPING
     # 資產負債表季表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_%s.djhtm':
-        (u'資產總額', u'負債總額'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa0_%s.djhtm',
+     (u'資產總額', u'負債總額')),
+    # 資產負債表季表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpa/zcpa_%s.djhtm',
+     (u'資產總額', u'負債總額')),
+
     # 損益季表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq_%s.djhtm':
-        (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq0_%s.djhtm',
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+    # 損益季表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq_%s.djhtm',
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+
     # 現金流量季表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc3_%s.djhtm':
-        # (u'稅後淨利', u'投資活動之現金流量'),
-        (u'投資活動之現金流量', u'來自營運之現金流量'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc30_%s.djhtm',
+     (u'投資活動之現金流量', u'來自營運之現金流量')),
+    # 現金流量季表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc3_%s.djhtm',
+     (u'投資活動之現金流量', u'來自營運之現金流量')),
+    # (u'稅後淨利', u'投資活動之現金流量'),
+
     # 財務比率季表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcr_%s.djhtm':
-        (u'營業毛利率', u'負債比率'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcr0_%s.djhtm',
+     (u'營業毛利率', u'負債比率')),
+    # 財務比率季表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcr_%s.djhtm',
+     (u'營業毛利率', u'負債比率')),
 
     # ANNUAL_MAPPING
     # 資產負債表年表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpb/zcpb_%s.djhtm':
-        (u'資產總額', u'負債總額'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpb/zcpb0_%s.djhtm',
+     (u'資產總額', u'負債總額')),
+    # 資產負債表年表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcp/zcpb/zcpb_%s.djhtm',
+     (u'資產總額', u'負債總額')),
+
     # 損益年表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm':
-        (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利'),
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm',
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+    # 損益年表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm',
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+
     # 財務比率季表
-    'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcra/zcra_%s.djhtm':
-        (u'營業毛利率', u'負債比率'),
-}
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcra/zcra0_%s.djhtm',
+     (u'營業毛利率', u'負債比率')),
+    # 財務比率季表(合併財報)
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcra/zcra_%s.djhtm',
+     (u'營業毛利率', u'負債比率')),
+)
 
 DIVIDEND_URL = 'http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcc/zcc_%s.djhtm'
 
@@ -96,7 +122,7 @@ def parse_dividend(stock_no):
 
 def run_once(stock_no):
     result = common.load_finance_report(stock_no)
-    for url, wanted in MAPPING.items():
+    for url, wanted in URL_COLS:
         url = url % stock_no
         parsed = parse_fubon_url(url, wanted)
         for period, values in parsed.items():
