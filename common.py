@@ -4,7 +4,8 @@ import sys
 import atexit
 import logging
 FORMAT = '%(asctime)s [%(levelname)05s] %(funcName)s(%(lineno)d) - %(message)s'
-logging.basicConfig(filename='cuckoo_log.log', filemode='ab', format=FORMAT)
+logging.basicConfig(filename='cuckoo_log.log', filemode='ab',
+                    format=FORMAT, level=logging.INFO)
 logger = logging.getLogger('cuckoo_log')
 
 try:

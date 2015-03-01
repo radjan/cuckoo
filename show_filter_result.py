@@ -5,7 +5,7 @@ import common
 f = common.load_filter_results()
 
 for k, v in f.items():
-    print 'fileter:', k
+    print 'filters:', k
     display = []
     for s_no in v['stocks']:
         s_info = common.load_stock(s_no)
