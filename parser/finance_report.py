@@ -11,6 +11,7 @@ import common
 
 ERROR = common.report_error
 COL_PERIOD = u'期別'
+COL_YEAR = u'年'
 
 URL_COLS = (  # (url, (wanted_column_names)) ordered, later values overwrite
     # QUARTER_MAPPING
@@ -81,7 +82,8 @@ def parse_fubon_url(url, wanted):
         if items and items[0]:
             col_name = items[0].strip()
             # assume period title is above the values
-            if col_name == COL_PERIOD:
+            # different col names for season and year reports
+            if col_name in (COL_PERIOD, COL_YEAR):
                 # there is .1~4Q in value
                 periods = [x.replace('.1~4Q', '') for x in items[1:]]
             elif col_name in wanted and periods:
@@ -128,7 +130,7 @@ def run_once(stock_no):
         for period, values in parsed.items():
             result.setdefault(period, {}).update(values)
     for period, values in parse_dividend(stock_no).items():
-            result.setdefault(period, {}).update(values)
+        result.setdefault(period, {}).update(values)
 
     common.save_finance_report(stock_no, result)
 
@@ -145,7 +147,7 @@ def main(no=-1):
                 todo.extend(s)
     total = len(todo)
     count = 0
-    widgets = [FormatLabel('Processed: %(value)d / {0} (in: %(elapsed)s)'.
+    widgets = [FormatLabel('Parsing Stocks: %(value)d / {0} (in: %(elapsed)s)'.
                            format(total))]
     pbar = ProgressBar(widgets=widgets, maxval=total)
     pbar.start()
