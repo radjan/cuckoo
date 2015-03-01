@@ -6,7 +6,18 @@ import common
 import config
 
 
-ERROR = common.report_error
+ERROR = common.logger.error
+INFO = common.logger.info
+COUNTS = {}
+def _c(key, c=1):
+    if key in COUNTS:
+        COUNTS[key] += c
+    else:
+        COUNTS[key] = c
+
+def _o():
+    for key in sorted(COUNTS.keys()):
+        INFO('{} = {}'.format(key, COUNTS[key]))
 
 
 class NoData(Exception):
@@ -59,7 +70,8 @@ def old_brother(s_no, stock_data):
         raise NoData('missing last_year finance report')
     last_year = meta[common.LAST_YEAR]
 
-    wanted = (common.LAST_4Q_YEAR, last_year)
+    # wanted = (common.LAST_4Q_YEAR, last_year) XXX LAST_4Q_YEAR broken
+    wanted = (last_year, )
     for y in wanted:
         if not y:
             m = "[OB] %s Missing last_year report" % s_no
@@ -68,26 +80,20 @@ def old_brother(s_no, stock_data):
         if not enough_value(finance[y], u'本期稅後淨利', 0.0, period=y,
                             s_no=s_no):
             return False
-        if not enough_value(finance[y], u'權責發生額', 0, period=y,
-                            reverse=True, s_no=s_no):
+        # if not enough_value(finance[y], u'權責發生額', 0.0, period=y,
+        #                     reverse=True, s_no=s_no):
+        if not negative_accrual(finance[y], period=y, s_no=s_no):
             return False
 
-    daily_reports = stock_data[common.DAILY]
-    latest_day = sorted(daily_reports.keys(), reverse=True)[0]
-    latest_report = daily_reports[latest_day]
-    if not enough_value(latest_report, u'殖利率',
-                        0.05, period=latest_day, s_no=s_no):
-        return False
-
     recent_years = meta[common.ANNUALS][:3]
-    recent_years.insert(0, common.LAST_4Q_YEAR)
+    # recent_years.insert(0, common.LAST_4Q_YEAR) XXX LAST_4Q_YEAR broken
     for y in recent_years:
         report = finance[y]
         if not all((enough_value(report, u'營業毛利率', 0.3, period=y,
                                  s_no=s_no),
                     enough_value(report, u'負債比率', 0.3, period=y,
                                  reverse=True, s_no=s_no),
-                    enough_value(report, u'每股盈餘(元)', 0, period=y,
+                    enough_value(report, u'每股盈餘(元)', 0.0, period=y,
                                  s_no=s_no))):
             return False
 
@@ -97,7 +103,16 @@ def old_brother(s_no, stock_data):
         f3 = finance[y3]
         return f1[var] - f3[var] > 0
 
-    return continous(recent_years, loose_eps_growth, window=3)
+    if not continous(recent_years, loose_eps_growth, window=3):
+        return False
+
+    daily_reports = stock_data[common.DAILY]
+    latest_day = sorted(daily_reports.keys(), reverse=True)[0]
+    latest_report = daily_reports[latest_day]
+    if not enough_value(latest_report, u'殖利率',
+                        0.05, period=latest_day, s_no=s_no):
+        return False
+    return True
 
 
 def negative_accrual(finance_report, period=None, s_no=None):
@@ -152,6 +167,7 @@ def main():
     for k, v in result.items():
         print k, len(v[common.KEY_STOCKS]), len(v[common.KEY_MISSING_DATA])
     common.save_filter_results(result)
+
 
 filters = {
     config.KAZUYO_KATSUMA: kazuyo_katsuma,
