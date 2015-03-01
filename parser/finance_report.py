@@ -52,7 +52,7 @@ URL_COLS = (  # (url, (wanted_column_names)) ordered, later values overwrite
      (u'資產總額', u'負債總額')),
 
     # 損益年表
-    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm',
+    ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa0_%s.djhtm',
      (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
     # 損益年表(合併財報)
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm',
