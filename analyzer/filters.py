@@ -31,8 +31,10 @@ def kazuyo_katsuma(s_no, stock_data):
         m = '[KK] %s: missing last_year finance report' % s_no
         ERROR(m)
         raise NoData(m)
-    wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])
-    # wanted = (meta[common.LAST_YEAR],)
+
+    # wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])
+    # XXX LAST_4Q_YEAR broken
+    wanted = (meta[common.LAST_YEAR],)
     for y in wanted:
         if not y:
             m = "[KK] %s: Missing last_year report" % s_no
@@ -68,10 +70,10 @@ def old_brother(s_no, stock_data):
     if common.LAST_YEAR not in meta:
         m = '[OB] %: missing last_year finance report' % s_no
         raise NoData('missing last_year finance report')
-    last_year = meta[common.LAST_YEAR]
 
-    # wanted = (common.LAST_4Q_YEAR, last_year) XXX LAST_4Q_YEAR broken
-    wanted = (last_year, )
+    # wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])
+    # XXX LAST_4Q_YEAR broken
+    wanted = (meta[common.LAST_YEAR],)
     for y in wanted:
         if not y:
             m = "[OB] %s Missing last_year report" % s_no
