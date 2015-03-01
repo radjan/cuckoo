@@ -2,6 +2,10 @@
 import os
 import sys
 import atexit
+import logging
+FORMAT = '%(asctime)s [%(levelname)05s] %(funcName)s(%(lineno)d) - %(message)s'
+logging.basicConfig(filename='cuckoo_log.log', filemode='ab', format=FORMAT)
+logger = logging.getLogger('cuckoo_log')
 
 try:
     import simplejson as json
@@ -170,6 +174,8 @@ error_tmp = None
 
 
 def report_error(msg):
+    ''' Deprecated
+    '''
     print >> sys.stderr, msg
     global error_tmp
     if error_tmp is None:
@@ -178,6 +184,7 @@ def report_error(msg):
     errors = error_tmp
     errors.append(msg)
 
+report_error = logger.error
 
 def _save_file(path, data):
     if LOCAL in SAVE_TO:
