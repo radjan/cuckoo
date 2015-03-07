@@ -7,7 +7,7 @@ f = common.load_filter_results()
 for k, v in f.items():
     print 'filter:', k
     display = []
-    for s_no in v['stocks']:
+    for s_no in sorted(v['stocks']):
         s_info = common.load_stock(s_no)
         info = (s_no, s_info[common.META][common.META_NAME])
         display.append(info)
