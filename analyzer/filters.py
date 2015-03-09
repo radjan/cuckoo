@@ -53,7 +53,7 @@ def kazuyo_katsuma(s_no, stock_data):
         last_qf = finance[last_q]
         if var_roa in qf and var_roa in last_qf:
             return qf[var_roa] - last_qf[var_roa] > 0
-        m = '[[KK] %s: Missing ROA data for %s or %s' % (s_no, q, last_q)
+        m = '[KK] %s: Missing ROA data for %s or %s' % (s_no, q, last_q)
         ERROR(m)
         raise NoData(m)
 
@@ -68,7 +68,7 @@ def old_brother(s_no, stock_data):
     finance = stock_data[common.FINANCE]
     meta = stock_data[common.META]
     if common.LAST_YEAR not in meta:
-        m = '[OB] %: missing last_year finance report' % s_no
+        m = '[OB] %s: missing last_year finance report' % s_no
         raise NoData('missing last_year finance report')
 
     # wanted = (common.LAST_4Q_YEAR, meta[common.LAST_YEAR])

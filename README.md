@@ -5,6 +5,7 @@ TW stock notifier
 
 # Prepare for the environment
 ```
+sudo apt-get install libxml2-dev libxslt-dev python-dev
 pip install -r requirements.txt
 ```
 
