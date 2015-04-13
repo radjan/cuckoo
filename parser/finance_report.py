@@ -24,10 +24,12 @@ URL_COLS = (  # (url, (wanted_column_names)) ordered, later values overwrite
 
     # 損益季表
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq0_%s.djhtm',
-     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利',
+      u'營業收入淨額', u'營業毛利', u'營業費用', u'營業利益')),
     # 損益季表(合併財報)
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcq_%s.djhtm',
-     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利',
+      u'營業收入淨額', u'營業毛利', u'營業費用', u'營業利益')),
 
     # 現金流量季表
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zc3/zc30_%s.djhtm',
@@ -54,10 +56,12 @@ URL_COLS = (  # (url, (wanted_column_names)) ordered, later values overwrite
 
     # 損益年表
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa0_%s.djhtm',
-     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利',
+      u'營業收入淨額', u'營業毛利', u'營業費用', u'營業利益')),
     # 損益年表(合併財報)
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcq/zcqa/zcqa_%s.djhtm',
-     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利')),
+     (u'稅前淨利', u'每股盈餘(元)', u'經常利益', u'本期稅後淨利',
+      u'營業收入淨額', u'營業毛利', u'營業費用', u'營業利益')),
 
     # 財務比率季表
     ('http://fubon-ebrokerdj.fbs.com.tw/z/zc/zcr/zcra/zcra0_%s.djhtm',
