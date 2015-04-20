@@ -1,3 +1,5 @@
+![Cuckoo Clock](http://radjan.github.io/cuckoo/cuckoo_clock.jpg)
+
 cuckoo
 ======
 
