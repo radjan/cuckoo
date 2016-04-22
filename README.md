@@ -11,6 +11,22 @@ sudo apt-get install libxml2-dev libxslt-dev python-dev
 pip install -r requirements.txt
 ```
 
+# Prepare for local database
+```
+sudo apt-get install postgresql postgresql-contrib
+sudo apt-get install python-psycopg2
+```
+
+# Set the postgres authentication
+```
+vim /etc/postgresql/9.4/main/pg_hba.conf
+
+// find the following line and set 'peer' to trust
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+
+```
+
 # Run daily job
 Parse the daily stock price
 ```
